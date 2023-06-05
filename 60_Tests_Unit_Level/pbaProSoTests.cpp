@@ -7,6 +7,7 @@ HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 #define TEST_FAIL   SetConsoleTextAttribute(hConsole,12);std::cout<<"FAIL";SetConsoleTextAttribute(hConsole,7);
 #define TEST_UNKN   SetConsoleTextAttribute(hConsole,14);std::cout<<"UNKNOWN";SetConsoleTextAttribute(hConsole,7);
 
+bool debFlag;
 
 template <typename T>
 TRes assertTrue(const T& actual, const T& expected) {
@@ -17,20 +18,30 @@ TRes assertTrue(const T& actual, const T& expected) {
     }
 }
 
-bool checkDebFlag(int argc, char* argv[])
+int checkDebFlag(int argc, char* argv[])
 {
-
     char* tmp = argv[1];
-    for (int i = 1; i < argc; i++) {
-        
+    for (int i = 1; i < argc; i++) 
+    {
         if (strcmp(tmp , "-deb") == 0) {
-            return true;
+            debFlag = 1;return 1;
         }
     }
-    return false;
+    debFlag=0;return 0;
 }
 
-void printResult(TRes TestResult, std::string inp, std::string out, std::string exp, bool debFlag)
+
+//===========================================================
+// Print Result of decode_cipherVigenere function
+//===========================================================
+void PRTRE_decode_cipherVigenere
+(   
+        TRes        TestResult, 
+        std::string inp,
+        std::string key, 
+        std::string out, 
+        std::string exp
+)
 {   
     switch(TestResult)
     {
@@ -39,50 +50,55 @@ void printResult(TRes TestResult, std::string inp, std::string out, std::string 
         default:            TEST_UNKN break;
     }
     if(debFlag)
-        std::cout << " " << inp << " -> " 
-                         << out << " -> " 
-                         << exp;
+        std::cout                           << std::endl
+                  << "Cipher  : " << inp    << std::endl
+                  << "Key     : " << key    << std::endl
+                  << "out     : " << out    << std::endl
+                  << "exp_out : " << exp    << std::endl;
     std::cout << std::endl;
 }
 
 
 void TEST__decode_cipherVigenere( void )
 {
-    
-}
-void TEST__timeConversion(bool debFlag)
-{
     std::cout << "----------------------------" << std::endl;
-    std::cout << "TEST: timeConversion    " << std::endl;
+    std::cout << "TEST: decode_cipherVigenere " << std::endl;
     std::cout << "----------------------------" << std::endl;
 
-    const int t_cnt = 3;
+    const int t_cnt = 1;
 
     struct tt
     {
-        std::string input;
+        std::string cipher;
+        std::string key;
         std::string exp_output;
     };
 
     tt TestTab[t_cnt]
 {
-//==============================|
-// TEST TABLE                   |
-//==============================|
-//    INPUT    |    EXPECTED    |
-  "12:01:00PM" ,   "12:01:00",
-  "12:01:00AM" ,   "00:01:00",
-  "07:05:45PM" ,   "19:05:45"
+//=====================================//
+// TEST TABLE                          //
+//=====================================//==TEST1==
+  "gwox{RgqssihYspOntqpxs}",           //cipher
+  "blorpyblorpyblorpyblorpyblorpy",    //key
+  "flag{CiphersAreAwesome}"            //ex_output
 };
+
     for(int i=0; i<t_cnt; i++)
     {
         TRes TestResult = TRes::unknown;
-        std::string out = timeConversion(TestTab[i].input);
+        std::string out = decode_cipherVigenere(TestTab[i].cipher, TestTab[i].key);
         std::string exp = TestTab[i].exp_output;
 
         TestResult = assertTrue(out,exp);
 
-        printResult(TestResult,TestTab[i].input, out,exp,debFlag);
-
-    }
+        PRTRE_decode_cipherVigenere 
+            (   
+                TestResult,
+                TestTab[i].cipher,
+                TestTab[i].key, 
+                out, 
+                exp
+            );
+    }    
 }

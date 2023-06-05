@@ -2,9 +2,11 @@
 #define PBAPROSO_HPP
 
 #include <string>
+#include <iostream>
+#include <sstream>
+#include <iomanip>
 
 void test(void);
-void decode_cipherVigenere(std::string, std::string);
-std::string timeConversion(std::string);
+std::string decode_cipherVigenere(std::string, std::string);
 
 #endif
