@@ -8,5 +8,9 @@
 
 void test(void);
 std::string decode_cipherVigenere(std::string, std::string);
+std::string decode_cipherCezar(std::string cipher,int shift);
+std::string decode_cipherXOR(std::string cipher);
+std::string decode_cipherXOR(std::string cipher, uint8_t key);
+void brute(void);
 
 #endif

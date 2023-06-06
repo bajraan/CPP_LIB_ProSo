@@ -11,6 +11,10 @@ void test(void)
  * @param cipher The ciphertext to be decoded.
  * @param key The key used for decoding.
  * @return The decoded plaintext.
+ * 
+ * @note
+ * 
+ * 
  */
 std::string decode_cipherVigenere
 (
@@ -19,15 +23,13 @@ std::string decode_cipherVigenere
 )
 {
     std::stringstream ss;
-
 	char vinTableBig[26][26];
 	char vinTableSmall[26][26];
 	
 	for(int i=0; i<26; i++)
 	{
 		static char litera = 'A';
-		for(int j=0; j<26; j++)
-		{
+		for(int j=0; j<26; j++){
 			if(litera == 'Z') litera = 'A';
 			vinTableBig[i][j] = litera;
 			litera++;
@@ -37,8 +39,7 @@ std::string decode_cipherVigenere
 	for(int i=0; i<26; i++)
 	{
 		char litera = 'a' + i;
-		for(int j=0; j<26; j++)
-		{
+		for(int j=0; j<26; j++){
 			if(litera > 'z') litera = 'a';
 			vinTableSmall[i][j] = litera;
 			litera++;
@@ -56,37 +57,46 @@ std::string decode_cipherVigenere
 	// } std::cout << std::endl;
 	
 	size_t size = cipher.size();
+	size_t size_k = key.size();
+
+	while(size>size_k){
+		key+=key;
+		size_k = key.size();
+	}
+	
 	
 	for(size_t i=0; i<size; i++)
 	{
 		char klucz = key[i];
 		char kod   = cipher[i];
-		
+
+		//-----------------------------------------------
+		// Small letter
+		//-----------------------------------------------
 		if(cipher[i] >= 'a' && cipher[i] <= 'z' )
 		{
-			for(int j=0; j<26; j++)
-			{
-				//cout << vinTableSmall[klucz-'a'][j] << "==" << kod <<
-				//" ret: "<< (char)(j+'a') << endl;
-				if(vinTableSmall[klucz-'a'][j] == kod)
-				{
+			for(int j=0; j<26; j++){
+				if(vinTableSmall[klucz-'a'][j] == kod){
 					ss << (char)(j+'a');
 					break;
 				}
 			}
 		}
+		//-----------------------------------------------
+		// Big letter
+		//-----------------------------------------------
 		else if(cipher[i] >= 'A' && cipher[i] <= 'Z' )
 		{
-			for(int j=0; j<26; j++)
-			{
-				//cout << vinTableBig[klucz-'a'][j] << "==" << kod << endl;
-				if(vinTableBig[klucz-'a'][j] == kod)
-				{
+			for(int j=0; j<26; j++){
+				if(vinTableBig[klucz-'a'][j] == kod){
 					ss << (char)(j+'A');
 					break;
 				}
 			}
 		}
+		//-----------------------------------------------
+		// Non latin letter
+		//-----------------------------------------------
 		else
         {
 		    ss << cipher[i];
@@ -96,4 +106,110 @@ std::string decode_cipherVigenere
         }
 	}
     return ss.str();
+}
+
+std::string decode_cipherCezar
+(	
+	std::string cipher,
+	int			shift
+)
+{
+	std::stringstream  ss;
+	size_t cip_size = cipher.size();
+
+	for(size_t i=0; i<cip_size; i++)
+	{
+		char znak = cipher[i];
+
+		if(znak >= 'a' && znak <= 'z' )
+		{
+			if(  znak + shift > 'z' ) 	ss << (char)('a'-1 +( znak + shift - 'z'));
+			else  				 		ss << (char)(znak + shift);
+		}
+		else if(znak >= 'A' && znak <= 'Z' )
+		{
+			if(  znak + shift > 'Z' ) ss << (char)('A'-1 +( znak + shift - 'Z'));
+			else 				  ss << (char)(znak + shift);
+		}
+		else{
+			ss << znak;
+		}
+	}
+	return ss.str();
+}
+
+
+
+
+std::string decode_cipherCezar
+(	
+	std::string cipher
+)
+{
+	std::string tmp;
+
+	for(int shift=0; shift<26; shift++)
+	{
+		tmp = decode_cipherCezar(cipher,shift);
+		std::cout << shift << " : " << tmp << std::endl;
+		if (tmp.find("flag") != std::string::npos) 
+		{
+			std::cout << "flag has been find" << std::endl;
+			break;
+		}
+		else
+		{
+			std::cout << shift << " : " << tmp << std::endl;
+		}	
+	}
+	return tmp;
+}
+
+
+std::string decode_cipherXOR
+(	
+	std::string cipher
+)
+{
+	std::string tmp;
+
+	for(int i=0; i<=255; i++)
+	{
+		tmp = decode_cipherXOR(cipher,i);
+		std::cout << i << " : " << tmp << std::endl;
+		
+		if (tmp.find("flag") != std::string::npos)
+		{
+			return tmp;
+		}
+
+	}
+	return ":(";
+}
+
+
+std::string decode_cipherXOR
+(	
+	std::string cipher,
+	uint8_t	 	key
+)
+{
+	std::stringstream ss;
+	size_t size = cipher.size();
+
+	for(size_t i=0; i<size; i++)
+	{
+		char k = cipher[i];
+		int A = (int)k;
+		A ^= key;
+		ss << (char)A;
+	}
+	return ss.str();
+}
+
+void brute(void)
+{
+	std::string cipher = "q{vpln'bH_varHuebcrqxetrHOXEj";
+	std::cout << decode_cipherCezar(cipher) << std::endl;
+	std::cout << decode_cipherXOR(cipher);
 }

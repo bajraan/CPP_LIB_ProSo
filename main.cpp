@@ -2,5 +2,6 @@
 
 int main() {
     test(); // Wywoˆanie funkcji z biblioteki "pbaProSo"
+    brute();
     return 0;
 }

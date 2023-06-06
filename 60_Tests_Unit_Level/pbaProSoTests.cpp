@@ -49,12 +49,14 @@ void PRTRE_decode_cipherVigenere
         case TRes::fail:    TEST_FAIL break;
         default:            TEST_UNKN break;
     }
+
     if(debFlag)
         std::cout                           << std::endl
                   << "Cipher  : " << inp    << std::endl
                   << "Key     : " << key    << std::endl
                   << "out     : " << out    << std::endl
                   << "exp_out : " << exp    << std::endl;
+
     std::cout << std::endl;
 }
 
@@ -75,14 +77,14 @@ void TEST__decode_cipherVigenere( void )
     };
 
     tt TestTab[t_cnt]
-{
-//=====================================//
-// TEST TABLE                          //
-//=====================================//==TEST1==
-  "gwox{RgqssihYspOntqpxs}",           //cipher
-  "blorpyblorpyblorpyblorpyblorpy",    //key
-  "flag{CiphersAreAwesome}"            //ex_output
-};
+    {
+    //======================================//
+    // TEST TABLE                           //
+    //======================================//==TEST1==
+    "gwox{RgqssihYspOntqpxs}",              //cipher
+    "blorpy",                               //key
+    "flag{CiphersAreAwesome}"               //ex_output
+    };
 
     for(int i=0; i<t_cnt; i++)
     {
