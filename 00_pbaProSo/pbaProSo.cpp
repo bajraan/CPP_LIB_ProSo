@@ -167,17 +167,19 @@ std::string decode_cipherCezar
 
 
 std::string decode_cipherXOR
-(	
+(
 	std::string cipher
 )
 {
 	std::string tmp;
+	int max = 8;
+	int max_bit = pow(2,max);
 
-	for(int i=0; i<=255; i++)
+	for(int i=0; i<=max_bit; i++)
 	{
 		tmp = decode_cipherXOR(cipher,i);
 		std::cout << i << " : " << tmp << std::endl;
-		
+
 		if (tmp.find("flag") != std::string::npos)
 		{
 			return tmp;
@@ -197,13 +199,26 @@ std::string decode_cipherXOR
 	std::stringstream ss;
 	size_t size = cipher.size();
 
-	for(size_t i=0; i<size; i++)
-	{
-		char k = cipher[i];
-		int A = (int)k;
-		A ^= key;
-		ss << (char)A;
-	}
+	// for(size_t i=0; i<255; i++)
+	// {
+	// 	char k = cipher[i];
+	// 	k ^= key;
+	// 	ss << k;
+	// }
+
+	std::string m1 ="aaa";
+	std::string m2 ="bbb";
+
+	std::string out;
+
+	uint8_t a = 10 ; //1010
+	uint8_t b = 12 ; //1100
+	uint8_t c = a^b;
+	std::cout << "a^b: " << c << std::endl;
+
+
+
+
 	return ss.str();
 }
 
