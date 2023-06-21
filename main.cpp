@@ -2,6 +2,7 @@
 
 int main() {
     test(); // Wywoˆanie funkcji z biblioteki "pbaProSo"
-    brute();
+    //brute();
+    decode_cipherBacon("ABAAAABABAABBABBAABBAABAAAAAABAAAAAAAABAABBABABBAAAAABBABBABABBAABAABABABBAABBABBAABB",'A','B');
     return 0;
 }

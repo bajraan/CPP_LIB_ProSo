@@ -13,5 +13,6 @@ int main(int argc, char* argv[]) {
 
     checkDebFlag(argc,argv);
     TEST__decode_cipherVigenere();
+    TEST__decode_cipherBacon();
     return 0;
 }

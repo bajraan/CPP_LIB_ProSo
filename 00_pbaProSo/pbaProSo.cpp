@@ -108,6 +108,47 @@ std::string decode_cipherVigenere
     return ss.str();
 }
 
+std::string decode_cipherBacon
+(
+	std::string cipher, 
+	char A, 
+	char B
+)
+{
+	int 	    size   = cipher.length();
+	int 		cnt	   = size/5;
+	std::stringstream ss;
+
+	for(int i = 0; i<size; i++)
+		cipher[i]==A ? ss<<"0" : ss<<"1";
+
+	//std::cout << ss.str() << std::endl;
+
+	std::string binary = ss.str();
+	int decoded[100];
+
+
+	std::stringstream tmp;
+	for(int i=0; i<cnt*5; i+=5){
+		for(int j=0; j<5; j++){
+			tmp << binary[i+j];
+		}
+		decoded[i/5] = std::stoi(tmp.str(),nullptr,2);
+		tmp.str(std::string());
+	}
+
+	for(int i=0; i<cnt; i++){
+		if(decoded[i] <=  8 )
+			tmp << char(decoded[i] + 'a');
+		else if((decoded[i] <=  19 ))
+			tmp << char(decoded[i] + 'a' + 1);
+		else
+			tmp << char(decoded[i] + 'a' + 2);
+	}
+
+	return tmp.str();
+}
+
 std::string decode_cipherCezar
 (	
 	std::string cipher,
@@ -197,8 +238,7 @@ std::string decode_cipherXOR
 )
 {
 	std::stringstream ss;
-	size_t size = cipher.size();
-
+	//size_t size = cipher.size();
 	// for(size_t i=0; i<255; i++)
 	// {
 	// 	char k = cipher[i];
