@@ -149,6 +149,32 @@ std::string decode_cipherBacon
 	return tmp.str();
 }
 
+std::string decode_cipherBacon
+(
+	std::string cipher
+)
+{
+	if(cipher.empty())
+	{
+		std::cout << "Error: cipher empty" << std::endl;
+		return 0;
+	}
+
+	char firstCharacter = cipher[0];
+
+	char secondCharacter;
+	int size = cipher.length();
+	for(int i=0; i<size; i++){
+		if(firstCharacter != cipher[i]){
+			secondCharacter = cipher[i];
+			break;
+		} 
+	}
+
+	return decode_cipherBacon(cipher, firstCharacter, secondCharacter);
+
+}
+
 std::string decode_cipherCezar
 (	
 	std::string cipher,
