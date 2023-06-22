@@ -36,13 +36,15 @@ int checkDebFlag(int argc, char* argv[])
 //===========================================================
 void PRTRE_decode_cipherVigenere
 (   
-        TRes        TestResult, 
+        TRes        TestResult,
+        int         Test_id, 
         std::string inp,
         std::string key, 
         std::string out, 
         std::string exp
 )
 {   
+    std::cout << "Test_id: " << Test_id << " ";
     switch(TestResult)
     {
         case TRes::pass:    TEST_PASS break;
@@ -71,6 +73,7 @@ void TEST__decode_cipherVigenere( void )
 
     struct tt
     {
+        int         Test_id;
         std::string cipher;
         std::string key;
         std::string exp_output;
@@ -81,6 +84,7 @@ void TEST__decode_cipherVigenere( void )
     //======================================//
     // TEST TABLE                           //
     //======================================//==TEST1==
+    1,
     "gwox{RgqssihYspOntqpxs}",              //cipher
     "blorpy",                               //key
     "flag{CiphersAreAwesome}"               //ex_output
@@ -97,6 +101,7 @@ void TEST__decode_cipherVigenere( void )
         PRTRE_decode_cipherVigenere 
             (   
                 TestResult,
+                TestTab[i].Test_id,
                 TestTab[i].cipher,
                 TestTab[i].key, 
                 out, 
@@ -110,12 +115,15 @@ void TEST__decode_cipherVigenere( void )
 //===========================================================
 void PRTRE_decode_cipherBacon
 (   
-        TRes        TestResult, 
+        TRes        TestResult,
+        int         Test_id, 
         std::string inp,
         std::string out, 
         std::string exp
 )
 {   
+    std::cout << "Test_id: " << Test_id << " ";
+
     switch(TestResult)
     {
         case TRes::pass:    TEST_PASS break;
@@ -144,6 +152,7 @@ void TEST__decode_cipherBacon(void)
 
     struct tt
     {
+        int         Test_id;
         std::string cipher;
         std::string exp_output;
     };
@@ -153,6 +162,7 @@ void TEST__decode_cipherBacon(void)
     //=========================================================================================//
     // TEST TABLE                                                                              //
     //=========================================================================================//==TEST1==
+    1,
     "ABAAAABABAABBABBAABBAABAAAAAABAAAAAAAABAABBABABBAAAAABBABBABABBAABAABABABBAABBABBAABB",   //cipher
     "ilouebacondontyou"                                                                        //ex_output
     };
@@ -168,6 +178,7 @@ void TEST__decode_cipherBacon(void)
         PRTRE_decode_cipherBacon 
             (   
                 TestResult,
+                TestTab[i].Test_id,
                 TestTab[i].cipher,
                 out, 
                 exp
