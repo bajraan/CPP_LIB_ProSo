@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <cstring>
+#include <vector>
 
 enum class TRes
 {
@@ -21,6 +22,8 @@ template <typename T>
 TRes assertTrue(const T& actual, const T& expected);
 int checkDebFlag(int, char* []);
 
+void TEST__missingNumbers(void);
+void PRTRE_missingNumbers(TRes, int, std::vector<int>, std::vector<int>, std::vector<int>, std::vector<int>);
 void TEST__decode_cipherVigenere(void);
 void PRTRE_decode_cipherVigenere(TRes, int, std::string, std::string, std::string, std::string);
 void TEST__decode_cipherBacon(void);

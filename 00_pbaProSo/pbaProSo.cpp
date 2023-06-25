@@ -1,9 +1,48 @@
+#include <vector>
 #include "pbaProSo.hpp"
 
 void test(void)
 {
     std::cout << "Library compilation - PASS" << std::endl;
 }
+
+/**
+ * Complete the 'missingNumbers' function below.
+ *
+ * The function is expected to return an INTEGER_ARRAY.
+ * The function accepts following parameters:
+ *  1. INTEGER_ARRAY arr
+ *  2. INTEGER_ARRAY brr
+ */
+
+std::vector<int> missingNumbers(std::vector<int> arr, std::vector<int> brr) {
+
+    //
+    // Prepare vector elements
+    //
+    std::sort(arr.begin(),arr.end());
+    std::sort(brr.begin(),brr.end());
+    int size_b = brr.size();
+    std::vector<int> ret;
+    
+    //
+    // Localize missing elements
+    //
+    for(int b=0,a=0; b<size_b; b++,a++){
+        if(brr[b] != arr[a]){
+            ret.push_back(brr[b]);
+            a--;
+        }
+    }
+    
+    //
+    // Eliminate duplicate elements
+    //
+    ret.erase(std::unique(ret.begin(), ret.end()), ret.end());
+
+    return ret;
+}
+
 
 /**
  * Decodes the Vigenere cipher for the given ciphertext and key.
