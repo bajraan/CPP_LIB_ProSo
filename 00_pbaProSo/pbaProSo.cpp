@@ -1,4 +1,3 @@
-#include <vector>
 #include "pbaProSo.hpp"
 
 void test(void)
@@ -7,6 +6,9 @@ void test(void)
 }
 
 /**
+ * 
+ * https://www.hackerrank.com/challenges/missing-numbers/problem
+ * 
  * Complete the 'missingNumbers' function below.
  *
  * The function is expected to return an INTEGER_ARRAY.
@@ -14,7 +16,6 @@ void test(void)
  *  1. INTEGER_ARRAY arr
  *  2. INTEGER_ARRAY brr
  */
-
 std::vector<int> missingNumbers(std::vector<int> arr, std::vector<int> brr) {
 
     //

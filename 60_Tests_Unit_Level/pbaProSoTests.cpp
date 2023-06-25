@@ -31,6 +31,7 @@ int checkDebFlag(int argc, char* argv[])
 }
 
 
+
 void TEST__missingNumbers(void)
 {
     std::cout << "----------------------------" << std::endl;
@@ -81,6 +82,8 @@ void TEST__missingNumbers(void)
         std::vector<int> exp = TestTab[i].exp_output;
         TestResult = assertTrue(out,exp);
 
+        TestResult = TRes::unknown;
+
         PRTRE_missingNumbers 
             (   
                 TestResult,
@@ -92,6 +95,9 @@ void TEST__missingNumbers(void)
             );
     } 
 }
+
+
+
 void TEST__decode_cipherVigenere( void )
 {
     std::cout << "----------------------------" << std::endl;
@@ -216,9 +222,8 @@ void TEST__decode_cipherBacon(void)
     }    
 }
 
-//
-//
-// https://www.hackerrank.com/challenges/missing-numbers/problem?isFullScreen=true
+
+
 void PRTRE_missingNumbers 
 (   
     TRes             TestResult,
