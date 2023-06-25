@@ -18,13 +18,6 @@ TRes assertTrue(const T& actual, const T& expected) {
     }
 }
 
-enum Overload_Type
-{
-    _int_,
-    _string_,
-    _stringcharchar_
-};
-
 int checkDebFlag(int argc, char* argv[])
 {
     char* tmp = argv[1];
@@ -99,7 +92,7 @@ void TEST__decode_cipherBacon(void)
     struct tt
     {
         int           Test_id;
-        Overload_Type Overload_ver;
+        OTyp          Overload_type;
         std::string   cipher;
         char          A;
         char          B;
@@ -112,14 +105,14 @@ void TEST__decode_cipherBacon(void)
     // TEST TABLE                                                                              //
     //=========================================================================================//==TEST1==
     1,
-    _stringcharchar_,
+    OTyp::_stringcharchar_,
     "ABAAAABABAABBABBAABBAABAAAAAABAAAAAAAABAABBABABBAAAAABBABBABABBAABAABABABBAABBABBAABB",   //cipher
     'A',
     'B',
     "ilouebacondontyou",                                                                       //ex_output
     //=========================================================================================//==TEST2==
     2,
-    _string_,
+    OTyp::_string_,
     "ABAAAABABAABBABBAABBAABAAAAAABAAAAAAAABAABBABABBAAAAABBABBABABBAABAABABABBAABBABBAABB",   //cipher
     'x',
     'x',
@@ -131,13 +124,13 @@ void TEST__decode_cipherBacon(void)
         TRes TestResult = TRes::unknown;
         std::string out, exp;
 
-        switch(TestTab[i].Overload_ver)
+        switch(TestTab[i].Overload_type)
         {
-            case(_stringcharchar_) : 
+            case(OTyp::_stringcharchar_) : 
                 out = decode_cipherBacon(TestTab[i].cipher, TestTab[i].A ,TestTab[i].B);
                 break;
 
-            case(_string_) :
+            case(OTyp::_string_) :
                 out = decode_cipherBacon(TestTab[i].cipher);
                 break;
 
