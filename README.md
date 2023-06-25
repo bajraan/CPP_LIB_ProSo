@@ -13,6 +13,8 @@
 ## Project Info
 ## Project Structure
 ## Project Details
+### missingNumbers()
+![Logo](70_Documentation/00_ReadmeFiles/missingNumbers_1.gif)
 ### Built With
 ## Tests
 ### Acceptance Level - Main Algorithm Test
