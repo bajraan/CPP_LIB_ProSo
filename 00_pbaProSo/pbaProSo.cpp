@@ -7,14 +7,38 @@ void test(void)
 
 /**
  * 
- * https://www.hackerrank.com/challenges/missing-numbers/problem
+ * Converts an integer into a vector of its individual digits.
+ *
+ * Source:
+ * https://www.hackerrank.com/challenges/find-digits/problem
  * 
+ * @param n The integer to be converted.
+ * @return A vector containing the individual digits of the input number.
+ */
+std::vector<int> intigerToDigitsVector(int n) {
+
+	std::vector<int> ret;
+    int tmp = n;
+    
+    for(int i=10; i<n*10; i*=10){
+        ret.push_back((tmp%i)/(i/10));
+        tmp -= tmp%i;
+    }
+    
+    return ret;
+}
+
+/**
+ *
  * Complete the 'missingNumbers' function below.
  *
+ * Source:
+ * https://www.hackerrank.com/challenges/missing-numbers/problem
+ * 
  * The function is expected to return an INTEGER_ARRAY.
- * The function accepts following parameters:
- *  1. INTEGER_ARRAY arr
- *  2. INTEGER_ARRAY brr
+ * @param arr tailored vector
+ * @param brr orginal vector
+ * @return A vector of missing elements.
  */
 std::vector<int> missingNumbers(std::vector<int> arr, std::vector<int> brr) {
 
