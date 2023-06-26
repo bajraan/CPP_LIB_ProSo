@@ -31,6 +31,48 @@ int checkDebFlag(int argc, char* argv[])
 }
 
 
+void TEST__intigerToDigitsVector(void)
+{
+    std::cout << "----------------------------" << std::endl;
+    std::cout << "TEST: intigerToDigitsVector " << std::endl;
+    std::cout << "----------------------------" << std::endl;
+
+    const int t_cnt = 1;
+
+    struct tt
+    {
+        int              Test_id;
+        int              n;
+        std::vector<int> exp_output;
+    };
+
+
+    tt TestTab[t_cnt];
+
+    //======================================//
+    // TEST 0 From HackerRank page          //
+    //======================================//
+    TestTab[0].Test_id = 0;
+    TestTab[0].n = 123456;
+    TestTab[0].exp_output.insert(TestTab[0].exp_output.end(), {6,5,4,3,2,1});
+
+    for(int i=0; i<t_cnt; i++)
+    {
+        TRes TestResult = TRes::unknown;
+        std::vector<int> out = intigerToDigitsVector(TestTab[i].n);
+        std::vector<int> exp = TestTab[i].exp_output;
+        TestResult = assertTrue(out,exp);
+
+        PRTRE_intigerToDigitsVector 
+            (   
+                TestResult,
+                TestTab[i].Test_id,
+                TestTab[i].n,
+                out, 
+                exp
+            );
+    } 
+}
 
 void TEST__missingNumbers(void)
 {
@@ -52,7 +94,7 @@ void TEST__missingNumbers(void)
     tt TestTab[t_cnt];
 
     //======================================//
-    // TEST 0 From HackerRank page          //
+    // TEST 0 Own test                      //
     //======================================//
     TestTab[0].Test_id = 0;
     TestTab[0].arr.insert(TestTab[0].arr.end(), {203, 204, 205, 206, 207, 208, 203, 204, 205, 206});
@@ -81,8 +123,6 @@ void TEST__missingNumbers(void)
         std::vector<int> out = missingNumbers (TestTab[i].arr, TestTab[i].brr);
         std::vector<int> exp = TestTab[i].exp_output;
         TestResult = assertTrue(out,exp);
-
-        TestResult = TRes::unknown;
 
         PRTRE_missingNumbers 
             (   
@@ -220,6 +260,33 @@ void TEST__decode_cipherBacon(void)
                 exp
             );
     }    
+}
+
+
+void PRTRE_intigerToDigitsVector 
+(   
+    TRes             TestResult,
+    int              Test_id,
+    int              n,
+    std::vector<int> out, 
+    std::vector<int> exp
+)
+{
+    std::cout << "Test_id: " << Test_id << " ";
+    switch(TestResult)
+    {
+        case TRes::pass:    TEST_PASS break;
+        case TRes::fail:    TEST_FAIL break;
+        default:            TEST_UNKN break;
+    }
+
+    if(debFlag)
+    {
+    std::cout <<                                                                     std::endl;
+    std::cout << "n       :";                   std::cout << n  << " "; std::cout << std::endl;
+    std::cout << "out     :"; for(int el : out) std::cout << el << " "; std::cout << std::endl;
+    std::cout << "exp_out :"; for(int el : exp) std::cout << el << " "; std::cout << std::endl;
+    }
 }
 
 

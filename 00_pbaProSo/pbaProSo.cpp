@@ -16,7 +16,7 @@ void test(void)
  * @return A vector containing the individual digits of the input number.
  */
 std::vector<int> intigerToDigitsVector(int n) {
-
+	
 	std::vector<int> ret;
     int tmp = n;
     

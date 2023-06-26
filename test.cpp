@@ -15,5 +15,6 @@ int main(int argc, char* argv[]) {
     TEST__decode_cipherVigenere();
     TEST__decode_cipherBacon();
     TEST__missingNumbers();
+    TEST__intigerToDigitsVector();
     return 0;
 }

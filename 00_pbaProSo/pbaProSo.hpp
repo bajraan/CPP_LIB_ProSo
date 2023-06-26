@@ -10,7 +10,10 @@
 #include <algorithm>
 
 void test(void);
+
+std::vector<int> intigerToDigitsVector(int n);
 std::vector<int> missingNumbers(std::vector<int> arr, std::vector<int> brr);
+
 std::string decode_cipherVigenere(std::string, std::string);
 std::string decode_cipherBacon(std::string cipher, char A, char B);
 std::string decode_cipherBacon(std::string cipher);
