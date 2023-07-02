@@ -14,6 +14,9 @@ void test(void)
  * 
  * @param n The integer to be converted.
  * @return A vector containing the individual digits of the input number.
+ * 
+ * @example 12345 -> 5 4 3 2 1
+ * 			54445 -> 5 4 4 4 5
  */
 std::vector<int> intigerToDigitsVector(int n) {
 	
@@ -39,6 +42,13 @@ std::vector<int> intigerToDigitsVector(int n) {
  * @param arr tailored vector
  * @param brr orginal vector
  * @return A vector of missing elements.
+ * @example arr  1 2 3 4 5
+ *          brr  1 1 2 2 3 3 3 3 4 5
+ * 			->   1 2 3
+ * 
+ *  		arr  203 204 205 206 207 208 203 204 205 206
+ * 			brr  203 204 204 205 206 207 205 208 203 206 205 206 204*        
+ * 			->   204 205 206
  */
 std::vector<int> missingNumbers(std::vector<int> arr, std::vector<int> brr) {
 
