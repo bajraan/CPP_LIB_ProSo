@@ -8,11 +8,14 @@
 #include <cmath>
 #include <vector>
 #include <algorithm>
+#include <unordered_map>
 
 void test(void);
 
 std::vector<int> intigerToDigitsVector(int n);
 std::vector<int> missingNumbers(std::vector<int> arr, std::vector<int> brr);
+int              minimumDistances__PBA_1(std::vector<int> a);
+int              minimumDistances__GPT_1(std::vector<int> a);
 
 std::string decode_cipherVigenere(std::string, std::string);
 std::string decode_cipherBacon(std::string cipher, char A, char B);

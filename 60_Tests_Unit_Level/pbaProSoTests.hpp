@@ -22,6 +22,9 @@ template <typename T>
 TRes assertTrue(const T& actual, const T& expected);
 int checkDebFlag(int, char* []);
 
+void TEST__minimumDistances(void);
+void TEST__minimumDistances(void);
+void PRTRE_minimumDistances(TRes, int, std::vector<int>, std::string, int, int );
 void TEST__missingNumbers(void);
 void PRTRE_missingNumbers(TRes, int, std::vector<int>, std::vector<int>, std::vector<int>, std::vector<int>);
 void TEST__intigerToDigitsVector(void);

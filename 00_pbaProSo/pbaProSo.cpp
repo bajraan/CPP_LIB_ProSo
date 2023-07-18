@@ -80,6 +80,65 @@ std::vector<int> missingNumbers(std::vector<int> arr, std::vector<int> brr) {
 
 
 /**
+ *
+ * Complete the 'minimumDistances' function below.
+ *
+ * Source:
+ * https://www.hackerrank.com/challenges/minimum-distances/problem
+ * 
+ * The distance between two array values is the number of indices between them. 
+ * Given array a, find the minimum distance between any pair of equal elements in the array. 
+ * If no such value exists, return -1.
+ * @param a vector
+ * @return Minimum distance.
+ * @example a   7 1 3 4 1 7 
+ * 		    ->  3
+ * 
+ */
+int minimumDistances__PBA_1(std::vector<int> a) {
+
+    int distance;
+    int min_distance=10000;
+
+    for(int i=0; i<a.size(); i++)
+    {
+        int current = a[i];
+        int last_it = i;
+        
+        for(int j=i+1; j<a.size(); j++)
+        {
+            if(current == a[j]) 
+            {
+                distance = j-last_it;
+                if(distance<min_distance) min_distance = distance;
+                last_it = j;
+            }
+        }
+    }return min_distance == 10000 ? -1 : min_distance ;
+}
+
+//
+// ChatGPT version
+//
+int minimumDistances__GPT_1(std::vector<int> a) {
+
+    std::unordered_map<int, int> indexMap;
+    int minDistance = std::numeric_limits<int>::max();
+
+    for (int i = 0; i < a.size(); ++i) {
+        if (indexMap.count(a[i]) > 0) {
+            int distance = i - indexMap[a[i]];
+            minDistance = std::min(minDistance, distance);
+        }
+        indexMap[a[i]] = i;
+    }
+
+    return (minDistance == std::numeric_limits<int>::max()) ? -1 : minDistance;
+}
+
+
+
+/**
  * Decodes the Vigenere cipher for the given ciphertext and key.
  * 
  * @param cipher The ciphertext to be decoded.

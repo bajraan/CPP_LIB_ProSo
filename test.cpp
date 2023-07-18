@@ -16,5 +16,6 @@ int main(int argc, char* argv[]) {
     TEST__decode_cipherBacon();
     TEST__missingNumbers();
     TEST__intigerToDigitsVector();
+    TEST__minimumDistances();
     return 0;
 }

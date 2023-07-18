@@ -30,6 +30,106 @@ int checkDebFlag(int argc, char* argv[])
     debFlag=0;return 0;
 }
 
+void TEST__minimumDistances(void)
+{
+    std::cout << "---------------------------------" << std::endl;
+    std::cout << "TEST: minimumDistances           " << std::endl;
+    std::cout << "                      __PBA_1    " << std::endl;
+    std::cout << "                      __GPT_1    " << std::endl;
+    std::cout << "---------------------------------" << std::endl;
+
+    const int t_cnt = 5;
+
+    struct tt
+    {
+        int               Test_id;
+        std::vector<int>  a;
+        int               exp_output;
+    };
+
+    tt TestTab[t_cnt];
+    std::cout << "tset0" << std::endl;
+
+    //======================================//
+    // TEST 0 From HackerRank page          //
+    //======================================//
+    TestTab[0].Test_id                     =  0;
+    TestTab[0].a.insert(TestTab[0].a.end(), { 7, 1, 3, 4, 1, 7 });
+    TestTab[0].exp_output                  =  3;
+    std::cout << "tset1" << std::endl;
+    //======================================//
+    // TEST 1 Own Test                      //
+    //======================================//
+    TestTab[1].Test_id                     =  1;
+    TestTab[1].a.insert(TestTab[1].a.end(), { 0, 1, 3, 4, 1, 7, 9, 2, 3, 1, 0, 6, 7, 8, 9, 0, 6, 7, 8, 9, 0 });
+    TestTab[1].exp_output                  =  3;
+    std::cout << "tset2" << std::endl;
+    //======================================//
+    // TEST 2 Own Test                      //
+    //======================================//
+    TestTab[2].Test_id                     =  2;
+    TestTab[2].a.insert(TestTab[2].a.end(), { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 });
+    TestTab[2].exp_output                  =  1;
+    std::cout << "tset3" << std::endl;
+    //======================================//
+    // TEST 3 Own Test                      //
+    //======================================//
+    TestTab[3].Test_id                     =  3;
+    TestTab[3].a.insert(TestTab[3].a.end(), {  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 
+                                              22,23,24,25,26,27,28,29 });
+    TestTab[3].exp_output                  =  -1;
+    std::cout << "tset4" << std::endl;
+    //======================================//
+    // TEST 4 Own Test                      //
+    //======================================//
+    TestTab[4].Test_id                     =  4;
+    TestTab[4].a.insert(TestTab[4].a.end(), { -1,-2,-4, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 
+                                              22,23,24,25,26,27,28,29 });
+    TestTab[4].exp_output                  =  -1;
+
+std::cout << "tset5" << std::endl;
+
+    for(int i=0; i<t_cnt; i++)
+    {
+        int out,exp;
+        TRes TestResult;
+        std::string testedVersionText;
+
+        testedVersionText = "__PBA_1";
+        TestResult = TRes::unknown;
+        out = minimumDistances__PBA_1(TestTab[i].a);
+        exp = TestTab[i].exp_output;
+        TestResult = assertTrue(out,exp);
+
+        PRTRE_minimumDistances 
+            (   
+                TestResult,
+                TestTab[i].Test_id,
+                TestTab[i].a,
+                testedVersionText,
+                out, 
+                exp
+            );
+
+        testedVersionText = "__GPT_1";
+        TestResult = TRes::unknown;
+        out = minimumDistances__GPT_1(TestTab[i].a);
+        exp = TestTab[i].exp_output;
+        TestResult = assertTrue(out,exp);
+
+        PRTRE_minimumDistances 
+            (   
+                TestResult,
+                TestTab[i].Test_id,
+                TestTab[i].a,
+                testedVersionText,
+                out, 
+                exp
+            );
+    }     
+}
+
+
 
 void TEST__intigerToDigitsVector(void)
 {
@@ -261,6 +361,35 @@ void TEST__decode_cipherBacon(void)
             );
     }    
 }
+
+void PRTRE_minimumDistances
+(
+    TRes             TestResult,
+    int              Test_id,
+    std::vector<int> a,
+    std::string      testedVersionText,
+    int              out, 
+    int              exp
+)
+{
+    std::cout << "Test_id: " << Test_id << " ";
+    switch(TestResult)
+    {
+        case TRes::pass:    TEST_PASS break;
+        case TRes::fail:    TEST_FAIL break;
+        default:            TEST_UNKN break;
+    }
+    std::cout << " Ver: " << testedVersionText;
+
+    if(debFlag)
+    {
+    std::cout <<                                                                   std::endl;
+    std::cout << "a   :"; for(int el : a  ) std::cout << el   << " "; std::cout << std::endl;
+    std::cout << "out :";                   std::cout << out  << " "; std::cout << std::endl;
+    std::cout << "exp :";                   std::cout << exp  << " "; std::cout << std::endl;
+    }
+}
+
 
 
 void PRTRE_intigerToDigitsVector 
