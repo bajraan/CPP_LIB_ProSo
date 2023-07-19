@@ -104,12 +104,12 @@ int minimumDistances__PBA_1(std::vector<int> a) {
     int distance;
     int min_distance=10000;
 
-    for(int i=0; i<a.size(); i++)
+    for(size_t i=0; i<a.size(); i++)
     {
         int current = a[i];
         int last_it = i;
         
-        for(int j=i+1; j<a.size(); j++)
+        for(size_t j=i+1; j<a.size(); j++)
         {
             if(current == a[j]) 
             {
@@ -129,7 +129,7 @@ int minimumDistances__GPT_1(std::vector<int> a) {
     std::unordered_map<int, int> indexMap;
     int minDistance = std::numeric_limits<int>::max();
 
-    for (int i = 0; i < a.size(); ++i) {
+    for (size_t i = 0; i < a.size(); ++i) {
         if (indexMap.count(a[i]) > 0) {
             int distance = i - indexMap[a[i]];
             minDistance = std::min(minDistance, distance);
