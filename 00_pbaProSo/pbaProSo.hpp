@@ -12,10 +12,11 @@
 
 void test(void);
 
-std::vector<int> intigerToDigitsVector(int n);
-std::vector<int> missingNumbers(std::vector<int> arr, std::vector<int> brr);
-int              minimumDistances__PBA_1(std::vector<int> a);
-int              minimumDistances__GPT_1(std::vector<int> a);
+std::vector<int> intigerToDigitsVector      (int);
+int              intigerToIntigerReversed   (int);
+std::vector<int> missingNumbers             (std::vector<int>, std::vector<int>);
+int              minimumDistances__PBA_1    (std::vector<int>);
+int              minimumDistances__GPT_1    (std::vector<int>);
 
 std::string decode_cipherVigenere(std::string, std::string);
 std::string decode_cipherBacon(std::string cipher, char A, char B);

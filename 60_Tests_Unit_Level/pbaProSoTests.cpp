@@ -181,6 +181,96 @@ void TEST__intigerToDigitsVector(void)
     } 
 }
 
+
+
+void TEST__intigerToIntigerReversed(void)
+{
+    std::cout << "---------------------------------" << std::endl;
+    std::cout << "TEST: intigerToIntigerReversed   " << std::endl;
+    std::cout << "---------------------------------" << std::endl;
+
+    const int t_cnt = 7;
+
+    struct tt
+    {
+        int Test_id;
+        int n;
+        int exp_output;
+    };
+
+    tt TestTab[t_cnt];
+
+    //======================================//
+    // TEST 0 Own test                      //
+    //======================================//
+    TestTab[0].Test_id = 0;
+    TestTab[0].n = 12345;
+    TestTab[0].exp_output = 54321; 
+
+    //======================================//
+    // TEST 1 From HackerRank page          //
+    //======================================//
+    TestTab[1].Test_id = 1;
+    TestTab[1].n = 987654;
+    TestTab[1].exp_output = 456789;  
+
+    //======================================//
+    // TEST 2 Own test                      //
+    //======================================//
+    TestTab[2].Test_id = 2;
+    TestTab[2].n = 1219;
+    TestTab[2].exp_output = 9121;
+
+    //======================================//
+    // TEST 3 Own test                      //
+    //======================================//
+    TestTab[3].Test_id = 3;
+    TestTab[3].n = 1;
+    TestTab[3].exp_output = 1;   
+
+    //======================================//
+    // TEST 4 Own test                      //
+    //======================================//
+    TestTab[4].Test_id = 4;
+    TestTab[4].n = 0;
+    TestTab[4].exp_output = 0;   
+
+    //======================================//
+    // TEST 5 Own test                      //
+    //======================================//
+    TestTab[5].Test_id = 5;
+    TestTab[5].n = 10000;
+    TestTab[5].exp_output = 1;   
+
+    //======================================//
+    // TEST 6 Own test                      //
+    //======================================//
+    TestTab[6].Test_id = 6;
+    TestTab[6].n = -479;
+    TestTab[6].exp_output = -974;  
+
+
+
+    for(int i=0; i<t_cnt; i++)
+    {
+        TRes TestResult = TRes::unknown;
+        int out = intigerToIntigerReversed (TestTab[i].n);
+        int exp = TestTab[i].exp_output;
+        TestResult = assertTrue(out,exp);
+
+        PRTRE_intigerToIntigerReversed 
+            (   
+                TestResult,
+                TestTab[i].Test_id,
+                TestTab[i].n,
+                out, 
+                exp
+            );
+    } 
+}
+
+
+
 void TEST__missingNumbers(void)
 {
     std::cout << "----------------------------" << std::endl;
@@ -368,6 +458,34 @@ void TEST__decode_cipherBacon(void)
             );
     }    
 }
+
+
+void PRTRE_intigerToIntigerReversed 
+(   
+    TRes    TestResult,
+    int     Test_id,
+    int     in,
+    int     out, 
+    int     exp
+)
+{
+    std::cout << "Test_id: " << Test_id << " ";
+    switch(TestResult)
+    {
+        case TRes::pass:    TEST_PASS break;
+        case TRes::fail:    TEST_FAIL break;
+        default:            TEST_UNKN break;
+    }
+
+    if(debFlag)
+    {
+    std::cout <<                                                   std::endl;
+    std::cout << "in  :";   std::cout << in   << " "; std::cout << std::endl;
+    std::cout << "out :";   std::cout << out  << " "; std::cout << std::endl;
+    std::cout << "exp :";   std::cout << exp  << " "; std::cout << std::endl;
+    }
+}
+
 
 void PRTRE_minimumDistances
 (

@@ -29,6 +29,8 @@ void TEST__missingNumbers(void);
 void PRTRE_missingNumbers(TRes, int, std::vector<int>, std::vector<int>, std::vector<int>, std::vector<int>);
 void TEST__intigerToDigitsVector(void);
 void PRTRE_intigerToDigitsVector(TRes, int, int, std::vector<int>, std::vector<int>);
+void TEST__intigerToIntigerReversed(void);
+void PRTRE_intigerToIntigerReversed(TRes, int, int, int, int);
 void TEST__decode_cipherVigenere(void);
 void PRTRE_decode_cipherVigenere(TRes, int, std::string, std::string, std::string, std::string);
 void TEST__decode_cipherBacon(void);

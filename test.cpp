@@ -17,5 +17,6 @@ int main(int argc, char* argv[]) {
     TEST__missingNumbers();
     TEST__intigerToDigitsVector();
     TEST__minimumDistances();
+    TEST__intigerToIntigerReversed();
     return 0;
 }

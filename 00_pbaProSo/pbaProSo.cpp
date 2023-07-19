@@ -20,6 +20,7 @@ void test(void)
  * 
  * @example 12345 -> 5 4 3 2 1
  * 			54445 -> 5 4 4 4 5
+ * 			1     -> 1
  * 
  */
 std::vector<int> intigerToDigitsVector(int n) {
@@ -33,6 +34,40 @@ std::vector<int> intigerToDigitsVector(int n) {
     }
     
     return ret;
+}
+
+
+
+/**
+ * 
+ * Converts an integer into a intiger with reversed digits.
+ *
+ * 1 Use: (Source) 
+ * https://www.hackerrank.com/challenges/beautiful-days-at-the-movies/problem?isFullScreen=true
+ * 
+ * 
+ * @param  int   The integer to be reversed.
+ * @return int   The intiger with reversed digits.
+ * 
+ * @example 12345  -> 54321
+ * 			987654 -> 456789
+ * 			1219   -> 9121
+ * 			1      -> 1
+ *          0      -> 0
+ * 			10000  -> 1
+ * 			-479   -> -974
+ * 
+ */
+int intigerToIntigerReversed(int n) {
+
+    int reversed = 0;
+
+    while (n != 0) {
+        reversed = reversed * 10 + n % 10;
+        n /= 10;
+    }
+
+    return reversed;
 }
 
 /**
