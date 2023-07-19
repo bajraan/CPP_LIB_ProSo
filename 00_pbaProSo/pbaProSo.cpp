@@ -9,14 +9,18 @@ void test(void)
  * 
  * Converts an integer into a vector of its individual digits.
  *
- * Source:
+ * 1 Use: (Source)
  * https://www.hackerrank.com/challenges/find-digits/problem
+ * 2 Use:
+ * https://www.hackerrank.com/challenges/beautiful-days-at-the-movies/problem?isFullScreen=true
  * 
- * @param n The integer to be converted.
- * @return A vector containing the individual digits of the input number.
+ * 
+ * @param  int           The integer to be converted.
+ * @return vector<int>   vector containing the individual digits of the input number.
  * 
  * @example 12345 -> 5 4 3 2 1
  * 			54445 -> 5 4 4 4 5
+ * 
  */
 std::vector<int> intigerToDigitsVector(int n) {
 	
