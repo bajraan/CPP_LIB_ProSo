@@ -137,7 +137,7 @@ void TEST__intigerToDigitsVector(void)
     std::cout << "TEST: intigerToDigitsVector " << std::endl;
     std::cout << "----------------------------" << std::endl;
 
-    const int t_cnt = 1;
+    const int t_cnt = 2;
 
     struct tt
     {
@@ -155,6 +155,13 @@ void TEST__intigerToDigitsVector(void)
     TestTab[0].Test_id = 0;
     TestTab[0].n = 123456;
     TestTab[0].exp_output.insert(TestTab[0].exp_output.end(), {6,5,4,3,2,1});
+
+    //======================================//
+    // TEST 1 Own test                      //
+    //======================================//
+    TestTab[1].Test_id = 1;
+    TestTab[1].n = 1;
+    TestTab[1].exp_output.insert(TestTab[1].exp_output.end(), {1});
 
     for(int i=0; i<t_cnt; i++)
     {
