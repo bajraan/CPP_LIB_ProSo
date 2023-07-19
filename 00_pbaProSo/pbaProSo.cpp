@@ -27,7 +27,7 @@ std::vector<int> intigerToDigitsVector(int n) {
 	std::vector<int> ret;
     int tmp = n;
     
-    for(int i=10; i<n*10; i*=10){
+    for(int i=10; i<=n*10; i*=10){
         ret.push_back((tmp%i)/(i/10));
         tmp -= tmp%i;
     }
