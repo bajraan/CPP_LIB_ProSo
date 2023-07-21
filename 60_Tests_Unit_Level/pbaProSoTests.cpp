@@ -128,7 +128,6 @@ void TEST__minimumDistances(void)
     };
 
     tt TestTab[t_cnt];
-    std::cout << "tset0" << std::endl;
 
     //======================================//
     // TEST 0 From HackerRank page          //
@@ -136,21 +135,21 @@ void TEST__minimumDistances(void)
     TestTab[0].Test_id                     =  0;
     TestTab[0].a.insert(TestTab[0].a.end(), { 7, 1, 3, 4, 1, 7 });
     TestTab[0].exp_output                  =  3;
-    std::cout << "tset1" << std::endl;
+
     //======================================//
     // TEST 1 Own Test                      //
     //======================================//
     TestTab[1].Test_id                     =  1;
     TestTab[1].a.insert(TestTab[1].a.end(), { 0, 1, 3, 4, 1, 7, 9, 2, 3, 1, 0, 6, 7, 8, 9, 0, 6, 7, 8, 9, 0 });
     TestTab[1].exp_output                  =  3;
-    std::cout << "tset2" << std::endl;
+
     //======================================//
     // TEST 2 Own Test                      //
     //======================================//
     TestTab[2].Test_id                     =  2;
     TestTab[2].a.insert(TestTab[2].a.end(), { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 });
     TestTab[2].exp_output                  =  1;
-    std::cout << "tset3" << std::endl;
+
     //======================================//
     // TEST 3 Own Test                      //
     //======================================//
@@ -158,7 +157,7 @@ void TEST__minimumDistances(void)
     TestTab[3].a.insert(TestTab[3].a.end(), {  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 
                                               22,23,24,25,26,27,28,29 });
     TestTab[3].exp_output                  =  -1;
-    std::cout << "tset4" << std::endl;
+
     //======================================//
     // TEST 4 Own Test                      //
     //======================================//
@@ -167,7 +166,6 @@ void TEST__minimumDistances(void)
                                               22,23,24,25,26,27,28,29 });
     TestTab[4].exp_output                  =  -1;
 
-std::cout << "tset5" << std::endl;
 
     for(int i=0; i<t_cnt; i++)
     {
