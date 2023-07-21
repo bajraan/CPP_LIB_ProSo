@@ -2,6 +2,10 @@
 
 int main(int argc, char* argv[]) {
 
+
+    setFlags(argc,argv);
+
+
     std::cout << std::endl << std::endl;
     std::cout << "=============================="<< std::endl;
     std::cout << "pbaProSo library Test Program"<< std::endl;
@@ -11,7 +15,7 @@ int main(int argc, char* argv[]) {
     std::cout <<i<<" : "<< argv[i] << std::endl;
     std::cout << "============================"<< std::endl;
 
-    setFlags(argc,argv);
+
     TEST__decode_cipherVigenere();
     TEST__decode_cipherBacon();
     TEST__missingNumbers();
