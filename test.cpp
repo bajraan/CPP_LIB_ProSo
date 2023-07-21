@@ -11,7 +11,7 @@ int main(int argc, char* argv[]) {
     std::cout <<i<<" : "<< argv[i] << std::endl;
     std::cout << "============================"<< std::endl;
 
-    checkDebFlag(argc,argv);
+    setFlags(argc,argv);
     TEST__decode_cipherVigenere();
     TEST__decode_cipherBacon();
     TEST__missingNumbers();
@@ -19,6 +19,6 @@ int main(int argc, char* argv[]) {
     TEST__minimumDistances();
     TEST__intigerToIntigerReversed();
     TEST__saveThePrisoner();
-    
+
     return 0;
 }

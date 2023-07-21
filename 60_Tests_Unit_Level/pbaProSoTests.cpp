@@ -8,6 +8,7 @@ HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 #define TEST_UNKN   SetConsoleTextAttribute(hConsole,14);std::cout<<"UNKNOWN";SetConsoleTextAttribute(hConsole,7);
 
 bool debFlag;
+bool printRaportFlag;
 
 template <typename T>
 TRes assertTrue(const T& actual, const T& expected) {
@@ -18,16 +19,18 @@ TRes assertTrue(const T& actual, const T& expected) {
     }
 }
 
-int checkDebFlag(int argc, char* argv[])
+void setFlags(int argc, char* argv[])
 {
     char* tmp = argv[1];
+
+    debFlag=0;
+    printRaportFlag=0;
+
     for (int i = 1; i < argc; i++) 
     {
-        if (strcmp(tmp , "-deb") == 0) {
-            debFlag = 1;return 1;
-        }
+        if (strcmp(tmp , "-deb") == 0) debFlag = 1;
+        if (strcmp(tmp , "-print") == 0) printRaportFlag = 1;
     }
-    debFlag=0;return 0;
 }
 
 
