@@ -5,6 +5,41 @@ void test(void)
     std::cout << "Library compilation - PASS" << std::endl;
 }
 
+
+/**
+ * 
+ * Solution for mentioned problem.
+ *
+ * 1 Use: (Source)
+ * https://www.hackerrank.com/challenges/save-the-prisoner/problem?isFullScreen=true
+ * 
+ * 
+ * @param  int         n amount of positions.
+ * @param  int         m amount of candy to distribute.
+ * @param  int         s The first candy shift.
+ * @return int   	   r The last candy position.
+ * 
+ *          [n][m][s]     [r]
+ * 			------------------
+ * @example  5  2  1  ->   2
+ * @example	 5  2  2  ->   3
+ * @example	 3  7  3  ->   3
+ * @example	 7  19 2  ->   6
+ *			------------------
+ * 
+ */
+int saveThePrisoner(int n, int m, int s) {
+
+    int ret = m%n;
+    if(!ret) ret = n;
+    
+    ret+=s-1;
+    
+    return ret>n ?  ret%n : ret ;
+    
+}
+
+
 /**
  * 
  * Converts an integer into a vector of its individual digits.

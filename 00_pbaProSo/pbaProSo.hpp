@@ -12,6 +12,7 @@
 
 void test(void);
 
+int              saveThePrisoner            (int, int, int);
 std::vector<int> intigerToDigitsVector      (int);
 int              intigerToIntigerReversed   (int);
 std::vector<int> missingNumbers             (std::vector<int>, std::vector<int>);
