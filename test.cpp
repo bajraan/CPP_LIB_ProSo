@@ -18,5 +18,7 @@ int main(int argc, char* argv[]) {
     TEST__intigerToDigitsVector();
     TEST__minimumDistances();
     TEST__intigerToIntigerReversed();
+    TEST__saveThePrisoner();
+    
     return 0;
 }

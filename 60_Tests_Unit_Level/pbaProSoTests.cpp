@@ -30,6 +30,86 @@ int checkDebFlag(int argc, char* argv[])
     debFlag=0;return 0;
 }
 
+
+
+void TEST__saveThePrisoner(void)
+{
+    std::cout << "----------------------------" << std::endl;
+    std::cout << "TEST: saveThePrisoner       " << std::endl;
+    std::cout << "----------------------------" << std::endl;
+
+    const int t_cnt = 4;
+
+    struct tt
+    {
+        int     Test_id;
+        int     n;
+        int     m;
+        int     s;            
+        int     exp_output;
+    };
+
+
+    tt TestTab[t_cnt];
+
+    //======================================//
+    // TEST 0 From HackerRank page          //
+    //======================================//
+    TestTab[0].Test_id = 0;
+    TestTab[0].n = 5;
+    TestTab[0].m = 2;
+    TestTab[0].s = 1;
+    TestTab[0].exp_output = 2;
+
+    //======================================//
+    // TEST 1 Own test                      //
+    //======================================//
+    TestTab[1].Test_id = 1;
+    TestTab[1].n = 5;
+    TestTab[1].m = 2;
+    TestTab[1].s = 2;
+    TestTab[1].exp_output = 3;
+
+    //======================================//
+    // TEST 2 Own test                      //
+    //======================================//
+    TestTab[2].Test_id = 2;
+    TestTab[2].n = 3;
+    TestTab[2].m = 7;
+    TestTab[2].s = 3;
+    TestTab[2].exp_output = 3;
+
+    //======================================//
+    // TEST 3 Own test                      //
+    //======================================//
+    TestTab[3].Test_id = 3;
+    TestTab[3].n = 7;
+    TestTab[3].m = 19;
+    TestTab[3].s = 2;
+    TestTab[3].exp_output = 6;
+
+    for(int i=0; i<t_cnt; i++)
+    {
+        TRes TestResult = TRes::unknown;
+        int out = saveThePrisoner(TestTab[i].n, TestTab[i].m, TestTab[i].s);
+        int exp = TestTab[i].exp_output;
+        TestResult = assertTrue(out,exp);
+
+        PRTRE_saveThePrisoner 
+            (   
+                TestResult,
+                TestTab[i].Test_id,
+                TestTab[i].n,
+                TestTab[i].m,
+                TestTab[i].s,
+                out, 
+                exp
+            );
+    } 
+}
+
+
+
 void TEST__minimumDistances(void)
 {
     std::cout << "---------------------------------" << std::endl;
@@ -458,6 +538,39 @@ void TEST__decode_cipherBacon(void)
             );
     }    
 }
+
+
+
+void PRTRE_saveThePrisoner 
+(   
+    TRes    TestResult,
+    int     Test_id,
+    int     n,
+    int     m,
+    int     s,
+    int     out, 
+    int     exp
+)
+{
+    std::cout << "Test_id: " << Test_id << " ";
+    switch(TestResult)
+    {
+        case TRes::pass:    TEST_PASS break;
+        case TRes::fail:    TEST_FAIL break;
+        default:            TEST_UNKN break;
+    }
+
+    if(debFlag)
+    {
+    std::cout <<                                                   std::endl;
+    std::cout << "n  : ";   std::cout << n    << " "; std::cout << std::endl;
+    std::cout << "m  : ";   std::cout << m    << " "; std::cout << std::endl;
+    std::cout << "s  : ";   std::cout << s    << " "; std::cout << std::endl;
+    std::cout << "out: ";   std::cout << out  << " "; std::cout << std::endl;
+    std::cout << "exp: ";   std::cout << exp  << " "; std::cout << std::endl;
+    }
+}
+
 
 
 void PRTRE_intigerToIntigerReversed 
