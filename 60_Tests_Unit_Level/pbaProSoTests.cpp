@@ -21,15 +21,14 @@ TRes assertTrue(const T& actual, const T& expected) {
 
 void setFlags(int argc, char* argv[])
 {
-    char* tmp = argv[1];
 
     debFlag=0;
     printRaportFlag=0;
 
     for (int i = 1; i < argc; i++) 
     {
-        if (strcmp(tmp , "-deb") == 0) debFlag = 1;
-        if (strcmp(tmp , "-print") == 0) printRaportFlag = 1;
+        if (strcmp(argv[i] , "-deb") == 0) debFlag = 1;
+        if (strcmp(argv[i] , "-print") == 0) printRaportFlag = 1;
     }
 }
 
@@ -561,7 +560,7 @@ void PRTRE_saveThePrisoner
         case TRes::pass:    TEST_PASS break;
         case TRes::fail:    TEST_FAIL break;
         default:            TEST_UNKN break;
-    }
+    }   std::cout << std::endl;
 
     if(debFlag)
     {
@@ -572,6 +571,10 @@ void PRTRE_saveThePrisoner
     std::cout << "out: ";   std::cout << out  << " "; std::cout << std::endl;
     std::cout << "exp: ";   std::cout << exp  << " "; std::cout << std::endl;
     }
+    
+
+
+
 }
 
 

@@ -6,6 +6,9 @@
 #include <cstring>
 #include <vector>
 
+#include <fstream>
+#include <sstream>
+
 enum class TRes
 {
     fail
@@ -18,9 +21,12 @@ enum class OTyp
     _string_,
     _stringcharchar_
 };
+
+
 template <typename T>
 TRes assertTrue(const T& actual, const T& expected);
 void setFlags(int, char* []);
+
 
 void TEST__saveThePrisoner(void);
 void PRTRE_saveThePrisoner(TRes, int, int, int, int, int, int);
