@@ -556,11 +556,10 @@ void PRTRE_saveThePrisoner
         case TRes::pass:    TEST_PASS break;
         case TRes::fail:    TEST_FAIL break;
         default:            TEST_UNKN break;
-    }
+    }   std::cout << std::endl;
 
     if(debFlag)
     {
-    std::cout <<                                                   std::endl;
     std::cout << "n  : ";   std::cout << n    << " "; std::cout << std::endl;
     std::cout << "m  : ";   std::cout << m    << " "; std::cout << std::endl;
     std::cout << "s  : ";   std::cout << s    << " "; std::cout << std::endl;
@@ -586,11 +585,10 @@ void PRTRE_intigerToIntigerReversed
         case TRes::pass:    TEST_PASS break;
         case TRes::fail:    TEST_FAIL break;
         default:            TEST_UNKN break;
-    }
+    }   std::cout << std::endl;
 
     if(debFlag)
     {
-    std::cout <<                                                   std::endl;
     std::cout << "in  :";   std::cout << in   << " "; std::cout << std::endl;
     std::cout << "out :";   std::cout << out  << " "; std::cout << std::endl;
     std::cout << "exp :";   std::cout << exp  << " "; std::cout << std::endl;
@@ -615,11 +613,10 @@ void PRTRE_minimumDistances
         case TRes::fail:    TEST_FAIL break;
         default:            TEST_UNKN break;
     }
-    std::cout << " Ver: " << testedVersionText;
+    std::cout << " Ver: " << testedVersionText << std::endl;
 
     if(debFlag)
     {
-    std::cout <<                                                                   std::endl;
     std::cout << "a   :"; for(int el : a  ) std::cout << el   << " "; std::cout << std::endl;
     std::cout << "out :";                   std::cout << out  << " "; std::cout << std::endl;
     std::cout << "exp :";                   std::cout << exp  << " "; std::cout << std::endl;
@@ -643,11 +640,10 @@ void PRTRE_intigerToDigitsVector
         case TRes::pass:    TEST_PASS break;
         case TRes::fail:    TEST_FAIL break;
         default:            TEST_UNKN break;
-    }
+    }   std::cout << std::endl;
 
     if(debFlag)
     {
-    std::cout <<                                                                     std::endl;
     std::cout << "n       :";                   std::cout << n  << " "; std::cout << std::endl;
     std::cout << "out     :"; for(int el : out) std::cout << el << " "; std::cout << std::endl;
     std::cout << "exp_out :"; for(int el : exp) std::cout << el << " "; std::cout << std::endl;
@@ -672,11 +668,10 @@ void PRTRE_missingNumbers
         case TRes::pass:    TEST_PASS break;
         case TRes::fail:    TEST_FAIL break;
         default:            TEST_UNKN break;
-    }
+    }   std::cout << std::endl;
 
     if(debFlag)
     {
-    std::cout <<                                                                     std::endl;
     std::cout << "arr     :"; for(int el : arr) std::cout << el << " "; std::cout << std::endl;
     std::cout << "brr     :"; for(int el : brr) std::cout << el << " "; std::cout << std::endl;
     std::cout << "out     :"; for(int el : out) std::cout << el << " "; std::cout << std::endl;
@@ -703,11 +698,11 @@ void PRTRE_decode_cipherVigenere
         case TRes::pass:    TEST_PASS break;
         case TRes::fail:    TEST_FAIL break;
         default:            TEST_UNKN break;
-    }
+    }   std::cout << std::endl;
 
     if(debFlag)
-        std::cout                           << std::endl
-                  << "Cipher  : " << inp    << std::endl
+         
+    std::cout     << "Cipher  : " << inp    << std::endl
                   << "Key     : " << key    << std::endl
                   << "out     : " << out    << std::endl
                   << "exp_out : " << exp    << std::endl;
@@ -736,13 +731,11 @@ void PRTRE_decode_cipherBacon
         case TRes::pass:    TEST_PASS break;
         case TRes::fail:    TEST_FAIL break;
         default:            TEST_UNKN break;
-    }
+    }   std::cout << std::endl;
 
     if(debFlag)
-        std::cout                           << std::endl
-                  << "Cipher  : " << inp    << std::endl
-                  << "out     : " << out    << std::endl
-                  << "exp_out : " << exp    << std::endl;
 
-    std::cout << std::endl;
+    std::cout << "Cipher  : " << inp    << std::endl
+              << "out     : " << out    << std::endl
+              << "exp_out : " << exp    << std::endl;
 }
