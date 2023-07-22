@@ -130,7 +130,6 @@ void TEST__minimumDistances(void)
     };
 
     tt TestTab[t_cnt];
-    std::cout << "tset0" << std::endl;
 
     //======================================//
     // TEST 0 From HackerRank page          //
@@ -138,21 +137,21 @@ void TEST__minimumDistances(void)
     TestTab[0].Test_id                     =  0;
     TestTab[0].a.insert(TestTab[0].a.end(), { 7, 1, 3, 4, 1, 7 });
     TestTab[0].exp_output                  =  3;
-    std::cout << "tset1" << std::endl;
+
     //======================================//
     // TEST 1 Own Test                      //
     //======================================//
     TestTab[1].Test_id                     =  1;
     TestTab[1].a.insert(TestTab[1].a.end(), { 0, 1, 3, 4, 1, 7, 9, 2, 3, 1, 0, 6, 7, 8, 9, 0, 6, 7, 8, 9, 0 });
     TestTab[1].exp_output                  =  3;
-    std::cout << "tset2" << std::endl;
+
     //======================================//
     // TEST 2 Own Test                      //
     //======================================//
     TestTab[2].Test_id                     =  2;
     TestTab[2].a.insert(TestTab[2].a.end(), { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 });
     TestTab[2].exp_output                  =  1;
-    std::cout << "tset3" << std::endl;
+
     //======================================//
     // TEST 3 Own Test                      //
     //======================================//
@@ -160,7 +159,7 @@ void TEST__minimumDistances(void)
     TestTab[3].a.insert(TestTab[3].a.end(), {  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 
                                               22,23,24,25,26,27,28,29 });
     TestTab[3].exp_output                  =  -1;
-    std::cout << "tset4" << std::endl;
+
     //======================================//
     // TEST 4 Own Test                      //
     //======================================//
@@ -169,7 +168,6 @@ void TEST__minimumDistances(void)
                                               22,23,24,25,26,27,28,29 });
     TestTab[4].exp_output                  =  -1;
 
-std::cout << "tset5" << std::endl;
 
     for(int i=0; i<t_cnt; i++)
     {
@@ -564,7 +562,6 @@ void PRTRE_saveThePrisoner
 
     if(debFlag)
     {
-    std::cout <<                                                   std::endl;
     std::cout << "n  : ";   std::cout << n    << " "; std::cout << std::endl;
     std::cout << "m  : ";   std::cout << m    << " "; std::cout << std::endl;
     std::cout << "s  : ";   std::cout << s    << " "; std::cout << std::endl;
@@ -594,11 +591,10 @@ void PRTRE_intigerToIntigerReversed
         case TRes::pass:    TEST_PASS break;
         case TRes::fail:    TEST_FAIL break;
         default:            TEST_UNKN break;
-    }
+    }   std::cout << std::endl;
 
     if(debFlag)
     {
-    std::cout <<                                                   std::endl;
     std::cout << "in  :";   std::cout << in   << " "; std::cout << std::endl;
     std::cout << "out :";   std::cout << out  << " "; std::cout << std::endl;
     std::cout << "exp :";   std::cout << exp  << " "; std::cout << std::endl;
@@ -623,11 +619,10 @@ void PRTRE_minimumDistances
         case TRes::fail:    TEST_FAIL break;
         default:            TEST_UNKN break;
     }
-    std::cout << " Ver: " << testedVersionText;
+    std::cout << " Ver: " << testedVersionText << std::endl;
 
     if(debFlag)
     {
-    std::cout <<                                                                   std::endl;
     std::cout << "a   :"; for(int el : a  ) std::cout << el   << " "; std::cout << std::endl;
     std::cout << "out :";                   std::cout << out  << " "; std::cout << std::endl;
     std::cout << "exp :";                   std::cout << exp  << " "; std::cout << std::endl;
@@ -651,11 +646,10 @@ void PRTRE_intigerToDigitsVector
         case TRes::pass:    TEST_PASS break;
         case TRes::fail:    TEST_FAIL break;
         default:            TEST_UNKN break;
-    }
+    }   std::cout << std::endl;
 
     if(debFlag)
     {
-    std::cout <<                                                                     std::endl;
     std::cout << "n       :";                   std::cout << n  << " "; std::cout << std::endl;
     std::cout << "out     :"; for(int el : out) std::cout << el << " "; std::cout << std::endl;
     std::cout << "exp_out :"; for(int el : exp) std::cout << el << " "; std::cout << std::endl;
@@ -680,11 +674,10 @@ void PRTRE_missingNumbers
         case TRes::pass:    TEST_PASS break;
         case TRes::fail:    TEST_FAIL break;
         default:            TEST_UNKN break;
-    }
+    }   std::cout << std::endl;
 
     if(debFlag)
     {
-    std::cout <<                                                                     std::endl;
     std::cout << "arr     :"; for(int el : arr) std::cout << el << " "; std::cout << std::endl;
     std::cout << "brr     :"; for(int el : brr) std::cout << el << " "; std::cout << std::endl;
     std::cout << "out     :"; for(int el : out) std::cout << el << " "; std::cout << std::endl;
@@ -711,11 +704,11 @@ void PRTRE_decode_cipherVigenere
         case TRes::pass:    TEST_PASS break;
         case TRes::fail:    TEST_FAIL break;
         default:            TEST_UNKN break;
-    }
+    }   std::cout << std::endl;
 
     if(debFlag)
-        std::cout                           << std::endl
-                  << "Cipher  : " << inp    << std::endl
+         
+    std::cout     << "Cipher  : " << inp    << std::endl
                   << "Key     : " << key    << std::endl
                   << "out     : " << out    << std::endl
                   << "exp_out : " << exp    << std::endl;
@@ -744,13 +737,11 @@ void PRTRE_decode_cipherBacon
         case TRes::pass:    TEST_PASS break;
         case TRes::fail:    TEST_FAIL break;
         default:            TEST_UNKN break;
-    }
+    }   std::cout << std::endl;
 
     if(debFlag)
-        std::cout                           << std::endl
-                  << "Cipher  : " << inp    << std::endl
-                  << "out     : " << out    << std::endl
-                  << "exp_out : " << exp    << std::endl;
 
-    std::cout << std::endl;
+    std::cout << "Cipher  : " << inp    << std::endl
+              << "out     : " << out    << std::endl
+              << "exp_out : " << exp    << std::endl;
 }
