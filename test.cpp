@@ -7,10 +7,6 @@ int main(int argc, char* argv[]) {
 
     preConditions();
 
-
-
-    postConditions();
-
     TEST__decode_cipherVigenere();
     TEST__decode_cipherBacon();
     TEST__missingNumbers();
@@ -19,5 +15,7 @@ int main(int argc, char* argv[]) {
     TEST__intigerToIntigerReversed();
     TEST__saveThePrisoner();
 
+    postConditions();
+    
     return 0;
 }

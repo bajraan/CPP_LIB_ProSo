@@ -8,8 +8,9 @@ HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 #define TEST_UNKN   SetConsoleTextAttribute(hConsole,14);std::cout<<"UNKNOWN";SetConsoleTextAttribute(hConsole,7);
 
 bool debFlag;
-bool printRaportFlag;
+bool printRaport2htmlFlag;
 std::vector<std::string> containerFlag;
+std::stringstream raportHtmlBuf;
 
 template <typename T>
 TRes assertTrue(const T& actual, const T& expected) {
@@ -24,13 +25,13 @@ void setFlags(int argc, char* argv[])
 {
     // branch test
     debFlag=0;
-    printRaportFlag=0;
+    printRaport2htmlFlag=0;
 
     for (int i = 1; i < argc; i++) 
     {
         containerFlag.push_back(argv[i]);
         if (strcmp(argv[i] , "-deb") == 0) debFlag = 1;
-        if (strcmp(argv[i] , "-print") == 0) printRaportFlag = 1;
+        if (strcmp(argv[i] , "-print") == 0) printRaport2htmlFlag = 1;
     }
 }
 
@@ -39,7 +40,7 @@ void preConditions(void)
 {
     std::cout << std::endl << std::endl;
     std::cout << "=============================="<< std::endl;
-    std::cout << "pbaProSo library Test Program"<< std::endl;
+    std::cout << "pbaProSo library Test Program "<< std::endl;
     std::cout << "=============================="<< std::endl;
     std::cout << "Flags:" << std::endl;
     for(std::string Flag : containerFlag)
@@ -47,18 +48,42 @@ void preConditions(void)
     std::cout << "=============================="<< std::endl;
 
 
-    if(printRaportFlag)
+    if(printRaport2htmlFlag)
     {
-
+        raportHtmlBuf << "<html>"                       << std::endl;
+        raportHtmlBuf << "<head>"                       << std::endl;
+        raportHtmlBuf << "  <title>TITLE</title>"       << std::endl;
+        raportHtmlBuf << "  <style>"                    << std::endl;
+        raportHtmlBuf << "  body {"                     << std::endl;
+        raportHtmlBuf << "    background-color: #111;"  << std::endl;
+        raportHtmlBuf << "    color: #fff;"             << std::endl;
+        raportHtmlBuf << "  }"                          << std::endl;
+        raportHtmlBuf << "  </style>"                   << std::endl;
+        raportHtmlBuf << "</head>"                      << std::endl;
+        raportHtmlBuf << "<body>"                       << std::endl;
+        raportHtmlBuf << "<h1>Test Raport</h1>"         << std::endl;
+        raportHtmlBuf << "<p>"                          << std::endl;
+        raportHtmlBuf << "==============================</br>" << std::endl;
+        raportHtmlBuf << "pbaProSo library Test Program </br>" << std::endl;
+        raportHtmlBuf << "==============================</br>" << std::endl;
+        raportHtmlBuf << "Flags:                        </br>" << std::endl;
+        for(std::string Flag : containerFlag)
+        raportHtmlBuf << "   -> "<< Flag <<            "</br>" << std::endl;
+        raportHtmlBuf << "==============================</br>" << std::endl;
+        raportHtmlBuf << "</p>" << std::endl;
+        raportHtmlBuf << "</body></html>" << std::endl;
     }
 
 }
 
 void postConditions(void)
 {
-    if(printRaportFlag)
+    if(printRaport2htmlFlag)
     {
 
+        std::ofstream outputFile("output.html");
+        outputFile << raportHtmlBuf.str();
+        outputFile.close();
     }
 }
 
@@ -66,10 +91,6 @@ void postConditions(void)
 
 void TEST__saveThePrisoner(void)
 {
-    std::cout << "----------------------------" << std::endl;
-    std::cout << "TEST: saveThePrisoner       " << std::endl;
-    std::cout << "----------------------------" << std::endl;
-
     const int t_cnt = 4;
 
     struct tt
@@ -592,20 +613,26 @@ void PRTRE_saveThePrisoner
 
     if(debFlag)
     {
-    std::cout << "n  : ";   std::cout << n    << " "; std::cout << std::endl;
-    std::cout << "m  : ";   std::cout << m    << " "; std::cout << std::endl;
-    std::cout << "s  : ";   std::cout << s    << " "; std::cout << std::endl;
-    std::cout << "out: ";   std::cout << out  << " "; std::cout << std::endl;
-    std::cout << "exp: ";   std::cout << exp  << " "; std::cout << std::endl;
+        std::cout << "n  : " << n    <<  std::endl;
+        std::cout << "m  : " << m    <<  std::endl;
+        std::cout << "s  : " << s    <<  std::endl;
+        std::cout << "out: " << out  <<  std::endl;
+        std::cout << "exp: " << exp  <<  std::endl;
     }
-    if(printRaportFlag)
+    if(printRaport2htmlFlag)
     {
-
+        raportHtmlBuf << "----------------------------</br>" << std::endl;
+        raportHtmlBuf << "TEST: saveThePrisoner       </br>" << std::endl;
+        raportHtmlBuf << "----------------------------</br>" << std::endl;
+        raportHtmlBuf << "Test_id: " << Test_id << " ";
+        if(TestResult == TRes::pass) raportHtmlBuf << "TEST_PASS</br>" << std::endl;
+        if(TestResult == TRes::fail) raportHtmlBuf << "TEST_FAIL</br>" << std::endl;
+        raportHtmlBuf << "n  : " << n    << "</br>" <<  std::endl;
+        raportHtmlBuf << "m  : " << m    << "</br>" <<  std::endl;
+        raportHtmlBuf << "s  : " << s    << "</br>" <<  std::endl;
+        raportHtmlBuf << "out: " << out  << "</br>" <<  std::endl;
+        raportHtmlBuf << "exp: " << exp  << "</br>" <<  std::endl;
     }
-    
-
-
-
 }
 
 
