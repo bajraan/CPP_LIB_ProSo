@@ -21,7 +21,7 @@ TRes assertTrue(const T& actual, const T& expected) {
 
 void setFlags(int argc, char* argv[])
 {
-
+    // branch test
     debFlag=0;
     printRaportFlag=0;
 
