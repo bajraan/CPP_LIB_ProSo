@@ -26,6 +26,7 @@ void test(void)
  * @example	 3  7  3  ->   3
  * @example	 7  19 2  ->   6
  *			------------------
+ *			------------------
  * 
  */
 int saveThePrisoner(int n, int m, int s) {
