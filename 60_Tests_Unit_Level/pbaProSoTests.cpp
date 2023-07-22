@@ -9,6 +9,7 @@ HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
 bool debFlag;
 bool printRaportFlag;
+std::vector<std::string> containerFlag;
 
 template <typename T>
 TRes assertTrue(const T& actual, const T& expected) {
@@ -27,8 +28,37 @@ void setFlags(int argc, char* argv[])
 
     for (int i = 1; i < argc; i++) 
     {
+        containerFlag.push_back(argv[i]);
         if (strcmp(argv[i] , "-deb") == 0) debFlag = 1;
         if (strcmp(argv[i] , "-print") == 0) printRaportFlag = 1;
+    }
+}
+
+
+void preConditions(void)
+{
+    std::cout << std::endl << std::endl;
+    std::cout << "=============================="<< std::endl;
+    std::cout << "pbaProSo library Test Program"<< std::endl;
+    std::cout << "=============================="<< std::endl;
+    std::cout << "Flags:" << std::endl;
+    for(std::string Flag : containerFlag)
+    std::cout << "   -> "<< Flag << std::endl;
+    std::cout << "=============================="<< std::endl;
+
+
+    if(printRaportFlag)
+    {
+
+    }
+
+}
+
+void postConditions(void)
+{
+    if(printRaportFlag)
+    {
+
     }
 }
 
@@ -567,6 +597,10 @@ void PRTRE_saveThePrisoner
     std::cout << "s  : ";   std::cout << s    << " "; std::cout << std::endl;
     std::cout << "out: ";   std::cout << out  << " "; std::cout << std::endl;
     std::cout << "exp: ";   std::cout << exp  << " "; std::cout << std::endl;
+    }
+    if(printRaportFlag)
+    {
+
     }
     
 

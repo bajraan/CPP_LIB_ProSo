@@ -26,7 +26,8 @@ enum class OTyp
 template <typename T>
 TRes assertTrue(const T& actual, const T& expected);
 void setFlags(int, char* []);
-
+void preConditions(void);
+void postConditions(void);
 
 void TEST__saveThePrisoner(void);
 void PRTRE_saveThePrisoner(TRes, int, int, int, int, int, int);
