@@ -8,6 +8,54 @@ void test(void)
 
 /**
  * 
+ * Solution for circularArrayRotation problem.
+ *
+ * 1 Use: (Source)
+ * https://www.hackerrank.com/challenges/circular-array-rotation/problem?h_r=profile
+ * 
+ * @param  vector<int> a 		Orginal data to shift.
+ * @param  int         k 		Shift.
+ * @param  vector<int> queries 	Vector of queries - each element is index(idx) of shifted vector 
+ * @return vector<int> ret	 	Returned vector of values from shifted vector index.
+ * 
+ * @example a 		: 1 2 3
+ * 			k 		: 2
+ * 		=== shifteda: 2 3 1 ===
+ * 			queries	: 0 1 2
+ * 			ret	    ->2 3 1
+ * 
+ * @example a 		: 8 2 7 3 3 1 9 7
+ * 			k 		: 18
+ * 		=== shifteda: 9 7 8 2 7 3 3 1 ===
+ * 			queries	: 7 2 0
+ * 			ret	    ->1 8 9
+ * 		
+ */
+std::vector<int> circularArrayRotation(std::vector<int> a, int k, std::vector<int> queries) {
+
+    std::vector<int> ret;
+    int size = a.size();
+
+    // Reducting amount of full shifts
+    int reducedShift = k%a.size();
+    
+    // Determine new idx=0 position
+    int idx0 = size - reducedShift;
+    if(idx0==size) idx0 = 0;
+    
+	// Determine new idx based on idx transformation
+    for(int idx : queries)
+    {
+        idx += idx0;  
+        
+        if(idx < size ) ret.push_back(a[idx]);    
+        else            ret.push_back(a[idx - size]);
+        
+    }
+    return ret;
+}
+/**
+ * 
  * Solution for mentioned problem.
  *
  * 1 Use: (Source)

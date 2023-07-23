@@ -12,6 +12,7 @@
 
 void test(void);
 
+std::vector<int> circularArrayRotation      (std::vector<int>, int, std::vector<int>);
 int              saveThePrisoner            (int, int, int);
 std::vector<int> intigerToDigitsVector      (int);
 int              intigerToIntigerReversed   (int);
