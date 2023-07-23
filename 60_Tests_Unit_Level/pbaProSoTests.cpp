@@ -50,26 +50,26 @@ void preConditions(void)
 
     if(printRaport2htmlFlag)
     {
-        raportHtmlBuf << "<html>"                       << std::endl;
-        raportHtmlBuf << "<head>"                       << std::endl;
-        raportHtmlBuf << "  <title>TITLE</title>"       << std::endl;
-        raportHtmlBuf << "  <style>"                    << std::endl;
-        raportHtmlBuf << "  body {"                     << std::endl;
-        raportHtmlBuf << "    background-color: #111;"  << std::endl;
-        raportHtmlBuf << "    color: #fff;"             << std::endl;
-        raportHtmlBuf << "  }"                          << std::endl;
-        raportHtmlBuf << "  </style>"                   << std::endl;
-        raportHtmlBuf << "</head>"                      << std::endl;
-        raportHtmlBuf << "<body>"                       << std::endl;
-        raportHtmlBuf << "<h1>Test Raport</h1>"         << std::endl;
-        raportHtmlBuf << "<p>"                          << std::endl;
-        raportHtmlBuf << "==============================</br>" << std::endl;
-        raportHtmlBuf << "pbaProSo library Test Program </br>" << std::endl;
-        raportHtmlBuf << "==============================</br>" << std::endl;
-        raportHtmlBuf << "Flags:                        </br>" << std::endl;
+        raportHtmlBuf << "<html>"                               << std::endl;
+        raportHtmlBuf << "<head>"                               << std::endl;
+        raportHtmlBuf << "  <title>TITLE</title>"               << std::endl;
+        raportHtmlBuf << "  <style>"                            << std::endl;
+        raportHtmlBuf << "  body {"                             << std::endl;
+        raportHtmlBuf << "    background-color: #111;"          << std::endl;
+        raportHtmlBuf << "    color: #fff;"                     << std::endl;
+        raportHtmlBuf << "  }"                                  << std::endl;
+        raportHtmlBuf << "  </style>"                           << std::endl;
+        raportHtmlBuf << "</head>"                              << std::endl;
+        raportHtmlBuf << "<body>"                               << std::endl;
+        raportHtmlBuf << "<h1>Test Raport</h1>"                 << std::endl;
+        raportHtmlBuf << "<p>"                                  << std::endl;
+        raportHtmlBuf << "==============================</br>"  << std::endl;
+        raportHtmlBuf << "pbaProSo library Test Program </br>"  << std::endl;
+        raportHtmlBuf << "==============================</br>"  << std::endl;
+        raportHtmlBuf << "Flags:                        </br>"  << std::endl;
         for(std::string Flag : containerFlag)
-        raportHtmlBuf << "   -> "<< Flag <<            "</br>" << std::endl;
-        raportHtmlBuf << "==============================</br>" << std::endl;
+        raportHtmlBuf << "   -> "<< Flag <<            "</br>"  << std::endl;
+        raportHtmlBuf << "==============================</br>"  << std::endl;
         raportHtmlBuf << "</p>" << std::endl;
         raportHtmlBuf << "</body></html>" << std::endl;
     }
@@ -87,6 +87,8 @@ void postConditions(void)
     }
 }
 
+    int size = 10;
+    std::vector<int> vec(size);
 
 
 void TEST__saveThePrisoner(void)
