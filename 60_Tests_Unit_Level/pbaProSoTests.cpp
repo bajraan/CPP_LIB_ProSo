@@ -31,6 +31,64 @@ int checkDebFlag(int argc, char* argv[])
 }
 
 
+void TEST__circularArrayRotation(void)
+{
+    std::cout << "----------------------------" << std::endl;
+    std::cout << "TEST: circularArrayRotation " << std::endl;
+    std::cout << "----------------------------" << std::endl;
+
+    const int t_cnt = 2;
+
+    struct tt
+    {
+        int              Test_id;
+        std::vector<int> a;
+        int              k;
+        std::vector<int> queries;            
+        std::vector<int> exp_output;
+    };
+
+
+    tt TestTab[t_cnt];
+
+    //======================================//
+    // TEST 0 From HackerRank page          //
+    //======================================//
+    TestTab[0].Test_id = 0;
+    TestTab[0].a.insert(TestTab[0].a.end(), {1, 2, 3,});
+    TestTab[0].k = 2;
+    TestTab[0].queries.insert(TestTab[0].queries.end(), {0, 1, 2,});
+    TestTab[0].exp_output.insert(TestTab[0].exp_output.end(), {2, 3, 1});
+
+    //======================================//
+    // TEST 1 From HackerRank page          //
+    //======================================//
+    TestTab[1].Test_id = 1;
+    TestTab[1].a.insert(TestTab[1].a.end(), {8, 2, 7, 3, 3, 1, 9, 7});
+    TestTab[1].k = 18;
+    TestTab[1].queries.insert(TestTab[1].queries.end(), {7, 2, 0});
+    TestTab[1].exp_output.insert(TestTab[1].exp_output.end(), {1, 8, 9});
+
+
+    for(int i=0; i<t_cnt; i++)
+    {
+        TRes TestResult = TRes::unknown;
+        std::vector<int> out = circularArrayRotation(TestTab[i].a, TestTab[i].k, TestTab[i].queries);
+        std::vector<int> exp = TestTab[i].exp_output;
+        TestResult = assertTrue(out,exp);
+
+        PRTRE_circularArrayRotation 
+            (   
+                TestResult,
+                TestTab[i].Test_id,
+                TestTab[i].a,
+                TestTab[i].k,
+                TestTab[i].queries,
+                out, 
+                exp
+            );
+    }    
+}
 
 void TEST__saveThePrisoner(void)
 {
@@ -535,6 +593,40 @@ void TEST__decode_cipherBacon(void)
                 exp
             );
     }    
+}
+
+
+
+void PRTRE_circularArrayRotation 
+(   
+    TRes             TestResult,
+    int              Test_id,
+    std::vector<int> a,
+    int              k,
+    std::vector<int> queries,
+    std::vector<int> out, 
+    std::vector<int> exp
+)
+{
+    std::cout << "Test_id: " << Test_id << " ";
+    switch(TestResult)
+    {
+        case TRes::pass:    TEST_PASS break;
+        case TRes::fail:    TEST_FAIL break;
+        default:            TEST_UNKN break;
+    }   std::cout << std::endl;
+
+    if(debFlag)
+    {
+    std::cout << "a      :"; for(int el : a      ) std::cout << el   << " "; std::cout << std::endl;
+    std::cout << "k      :";                       std::cout << k    << " "; std::cout << std::endl;
+    std::cout << "queries:"; for(int el : queries) std::cout << el   << " "; std::cout << std::endl;
+    std::cout << "out    :"; for(int el : out    ) std::cout << el   << " "; std::cout << std::endl;
+    std::cout << "exp    :"; for(int el : exp    ) std::cout << el   << " "; std::cout << std::endl;
+    }
+
+
+
 }
 
 

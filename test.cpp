@@ -19,6 +19,7 @@ int main(int argc, char* argv[]) {
     TEST__minimumDistances();
     TEST__intigerToIntigerReversed();
     TEST__saveThePrisoner();
+    TEST__circularArrayRotation();
     
     return 0;
 }
