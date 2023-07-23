@@ -29,6 +29,8 @@ void setFlags(int, char* []);
 void preConditions(void);
 void postConditions(void);
 
+void TEST__circularArrayRotation(void);
+void PRTRE_circularArrayRotation (TRes, int, std::vector<int>, int, std::vector<int>, std::vector<int>, std::vector<int>);
 void TEST__saveThePrisoner(void);
 void PRTRE_saveThePrisoner(TRes, int, int, int, int, int, int);
 void TEST__minimumDistances(void);
