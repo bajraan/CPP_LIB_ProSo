@@ -6,6 +6,247 @@ void test(void)
 }
 
 
+
+/**
+ * 
+ * Solution for Beautiful Triplets problem.
+ *
+ * 1 Use: (Source)
+ * https://www.hackerrank.com/challenges/beautiful-triplets/problem?isFullScreen=true
+ * 
+ * @param  int         d 		Triplet diff
+ * @param  vector<int> arr 		Array of sorted numberes
+ * @return int		   ret	 	Returned amount of founded triplets in arr
+ * 
+ * @example d 	:  3
+ * 			arr :  1 2 4 5 7 8 10
+ * 			ret	-> 3
+ * 
+ * 		explained:
+ * 		===  	1(1 4 7)   ===
+ * 		===		2(2 5 8)   ===
+ * 		===		3(4 7 10)  ===
+ * 
+ * @example a 	:  3
+ * 			arr	:  1 6 7 7 8 10 12 13 14 19
+ * 			ret -> 2
+ *
+ * 		explained:
+ * 		===  	1(7 8 13)   ===
+ * 		===		2(7 8 13)   ===
+ * 
+ * 
+ * @note Algorithm complexity: O(nlogn) + O(n) +  O(n)
+ * @note Algorithm complexity: O(nlogn) + O(nlogn) +  O(n)
+ */
+int beautifulTriplets__PBA_1(int d, std::vector<int> arr) {
+
+    int ret = 0;
+
+    for(int i=1; i<arr.size()-1; i++){
+        int Left     = arr[i]-d;
+        int LeftCnt  = 0;
+        int Right    = arr[i]+d;
+        int RightCnt = 0;
+        bool Lexists = false;
+        bool Rexists = false;
+        
+        //Check if Left  Exists and how many
+        for(int j=i; j>=0; j--){
+            if(arr[j] == Left ){
+                Lexists = true;
+                while(arr[j] == Left ){
+                    LeftCnt++;
+                    j--;
+                }
+                break;
+            }
+        }
+        
+        //Check if Right Exists and how many
+        for(int j=i; j<arr.size(); j++){
+            if(arr[j] == Right ){
+                Rexists = true;
+                while(arr[j] == Right ){
+                    RightCnt++;
+                    j++;
+                }
+                break;
+            }
+        }
+        
+        if(Lexists && Rexists){
+            ret += RightCnt * LeftCnt;
+        }
+    }
+    return ret;
+}
+
+
+
+/**
+ * 
+ * Solution for Beautiful Triplets problem.
+ *
+ * 1 Use: (Source)
+ * https://www.hackerrank.com/challenges/beautiful-triplets/problem?isFullScreen=true
+ * 
+ * @param  int         d 		Triplet diff
+ * @param  vector<int> arr 		Array of sorted numberes
+ * @return int		   ret	 	Returned amount of founded triplets in arr
+ * 
+ * @example d 	:  3
+ * 			arr :  1 2 4 5 7 8 10
+ * 			ret	-> 3
+ * 
+ * 		explained:
+ * 		===  	1(1 4 7)   ===
+ * 		===		2(2 5 8)   ===
+ * 		===		3(4 7 10)  ===
+ * 
+ * @example a 	:  3
+ * 			arr	:  1 6 7 7 8 10 12 13 14 19
+ * 			ret -> 2
+ *
+ * 		explained:
+ * 		===  	1(7 8 13)   ===
+ * 		===		2(7 8 13)   ===
+ * 
+ * 
+ * @note Algorithm complexity: O(nlogn) + O(n) +  O(n)
+ * @note Algorithm complexity: O(nlogn) + O(nlogn) +  O(n)
+ */
+int beautifulTriplets__GPT_1(int d, std::vector<int> arr) {
+    int ret = 0;
+    
+    // Create a hash map to store the occurrences of elements in the array
+    std::unordered_map<int, int> occurrences;
+    for (int num : arr) {
+        occurrences[num]++;
+    }
+
+    // Check for beautiful triplets
+    for (int num : arr) {
+        int left = num - d;
+        int right = num + d;
+
+        // Check if the left and right elements exist in the occurrences map
+        if (occurrences.count(left) && occurrences.count(right)) {
+            ret += occurrences[left] * occurrences[right];
+        }
+    }
+
+    return ret;
+}
+
+
+/**
+ * 
+ * Solution for Beautiful Triplets problem.
+ *
+ * 1 Use: (Source)
+ * https://www.hackerrank.com/challenges/beautiful-triplets/problem?isFullScreen=true
+ * 
+ * @param  int         d 		Triplet diff
+ * @param  vector<int> arr 		Array of sorted numberes
+ * @return int		   ret	 	Returned amount of founded triplets in arr
+ * 
+ * @example d 	:  3
+ * 			arr :  1 2 4 5 7 8 10
+ * 			ret	-> 3
+ * 
+ * 		explained:
+ * 		===  	1(1 4 7)   ===
+ * 		===		2(2 5 8)   ===
+ * 		===		3(4 7 10)  ===
+ * 
+ * @example a 	:  3
+ * 			arr	:  1 6 7 7 8 10 12 13 14 19
+ * 			ret -> 2
+ *
+ * 		explained:
+ * 		===  	1(7 8 13)   ===
+ * 		===		2(7 8 13)   ===
+ * 
+ * 
+ * @note Algorithm complexity: O(nlogn) + O(n) +  O(n)
+ * @note Algorithm complexity: O(nlogn) + O(nlogn) +  O(n)
+ */
+int beautifulTriplets__OTH_1(int d, std::vector<int> arr) {
+    int ret = 0;
+    int n = arr.size();
+
+    // Nested loops for generating all possible triplets
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            for (int k = j + 1; k < n; k++) {
+                if (arr[j] - arr[i] == d && arr[k] - arr[j] == d) {
+                    ret++;
+                }
+            }
+        }
+    }
+
+    return ret;
+}
+
+
+/**
+ * 
+ * Solution for circularArrayRotation problem.
+ *
+ * 1 Use: (Source)
+ * https://www.hackerrank.com/challenges/circular-array-rotation/problem?h_r=profile
+ * 
+ * @param  vector<int> a 		Orginal data to shift.
+ * @param  int         k 		Shift.
+ * @param  vector<int> queries 	Vector of queries - each element is index(idx) of shifted vector 
+ * @return vector<int> ret	 	Returned vector of values from shifted vector index.
+ * 
+ * @example a 		: 1 2 3
+ * 			k 		: 2
+ * 		=== shifteda: 2 3 1 ===
+ * 			queries	: 0 1 2
+ * 			ret	    ->2 3 1
+ * 
+ * @example a 		: 8 2 7 3 3 1 9 7
+ * 			k 		: 18
+ * 		=== shifteda: 9 7 8 2 7 3 3 1 ===
+ * 			queries	: 7 2 0
+ * 			ret	    ->1 8 9
+ * 		
+ */
+int beautifulTriplets__GPT_2(int d, std::vector<int> arr) {
+    int ret = 0;
+    int n = arr.size();
+
+    // Check for beautiful triplets
+    for (int i = 0; i < n - 2; i++) {
+        int left = arr[i] + d;
+        int right = arr[i] + 2 * d;
+
+        // Use two pointers to find the left and right elements
+        int leftIndex = i + 1;
+        int rightIndex = i + 2;
+
+        while (rightIndex < n) {
+            if (arr[leftIndex] == left && arr[rightIndex] == right) {
+                ret++;
+                leftIndex++;
+                rightIndex++;
+            } else if (arr[leftIndex] < left) {
+                leftIndex++;
+            } else {
+                rightIndex++;
+            }
+        }
+    }
+
+    return ret;
+}
+
+
+
 /**
  * 
  * Solution for circularArrayRotation problem.
@@ -54,6 +295,9 @@ std::vector<int> circularArrayRotation(std::vector<int> a, int k, std::vector<in
     }
     return ret;
 }
+
+
+
 /**
  * 
  * Solution for mentioned problem.
