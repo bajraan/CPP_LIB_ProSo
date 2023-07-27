@@ -21,20 +21,16 @@ void test(void)
  * @example d 	:  3
  * 			arr :  1 2 4 5 7 8 10
  * 			ret	-> 3
- * 
  * 		explained:
  * 		===  	1(1 4 7)   ===
  * 		===		2(2 5 8)   ===
  * 		===		3(4 7 10)  ===
- * 
  * @example a 	:  3
  * 			arr	:  1 6 7 7 8 10 12 13 14 19
  * 			ret -> 2
- *
- * 		explained:
+ * 		explanation:
  * 		===  	1(7 8 13)   ===
  * 		===		2(7 8 13)   ===
- * 
  * 
  * @note Algorithm complexity: O(nlogn) + O(n) +  O(n)
  * @note Algorithm complexity: O(nlogn) + O(nlogn) +  O(n)
@@ -98,20 +94,16 @@ int beautifulTriplets__PBA_1(int d, std::vector<int> arr) {
  * @example d 	:  3
  * 			arr :  1 2 4 5 7 8 10
  * 			ret	-> 3
- * 
  * 		explained:
  * 		===  	1(1 4 7)   ===
  * 		===		2(2 5 8)   ===
  * 		===		3(4 7 10)  ===
- * 
  * @example a 	:  3
  * 			arr	:  1 6 7 7 8 10 12 13 14 19
  * 			ret -> 2
- *
- * 		explained:
+ * 		explanation:
  * 		===  	1(7 8 13)   ===
  * 		===		2(7 8 13)   ===
- * 
  * 
  * @note Algorithm complexity: O(nlogn) + O(n) +  O(n)
  * @note Algorithm complexity: O(nlogn) + O(nlogn) +  O(n)
@@ -154,20 +146,16 @@ int beautifulTriplets__GPT_1(int d, std::vector<int> arr) {
  * @example d 	:  3
  * 			arr :  1 2 4 5 7 8 10
  * 			ret	-> 3
- * 
- * 		explained:
+ * 		explanation:
  * 		===  	1(1 4 7)   ===
  * 		===		2(2 5 8)   ===
  * 		===		3(4 7 10)  ===
- * 
  * @example a 	:  3
  * 			arr	:  1 6 7 7 8 10 12 13 14 19
  * 			ret -> 2
- *
  * 		explained:
  * 		===  	1(7 8 13)   ===
  * 		===		2(7 8 13)   ===
- * 
  * 
  * @note Algorithm complexity: O(nlogn) + O(n) +  O(n)
  * @note Algorithm complexity: O(nlogn) + O(nlogn) +  O(n)
