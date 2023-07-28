@@ -20,6 +20,6 @@ int main(int argc, char* argv[]) {
     TEST__intigerToIntigerReversed();
     TEST__saveThePrisoner();
     TEST__circularArrayRotation();
-    
+    TEST__beautifulTriplets();
     return 0;
 }

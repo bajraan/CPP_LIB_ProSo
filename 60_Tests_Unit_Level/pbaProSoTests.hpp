@@ -22,6 +22,8 @@ template <typename T>
 TRes assertTrue(const T& actual, const T& expected);
 int checkDebFlag(int, char* []);
 
+void TEST__beautifulTriplets(void);
+void PRTRE_beautifulTriplets (TRes, int, int, int, std::string, int, int, std::vector<int>);
 void TEST__circularArrayRotation(void);
 void PRTRE_circularArrayRotation (TRes, int, std::vector<int>, int, std::vector<int>, std::vector<int>, std::vector<int>);
 void TEST__saveThePrisoner(void);

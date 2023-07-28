@@ -9,6 +9,8 @@ HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
 bool debFlag;
 
+typedef int(*FunctionPtr)(int, std::vector<int>);
+
 template <typename T>
 TRes assertTrue(const T& actual, const T& expected) {
     if (actual == expected) {
@@ -17,6 +19,8 @@ TRes assertTrue(const T& actual, const T& expected) {
         return TRes::fail;
     }
 }
+
+
 
 int checkDebFlag(int argc, char* argv[])
 {
@@ -29,6 +33,72 @@ int checkDebFlag(int argc, char* argv[])
     }
     debFlag=0;return 0;
 }
+
+
+
+void TEST__beautifulTriplets(void)
+{
+    std::cout << "---------------------------------" << std::endl;
+    std::cout << "TEST: beautifulTriplets          " << std::endl;
+    std::cout << "                      __OTH_1    " << std::endl;
+    std::cout << "                      __PBA_1    " << std::endl;
+    std::cout << "                      __GPT_1    " << std::endl;
+    std::cout << "                      __GPT_2    " << std::endl;
+    std::cout << "---------------------------------" << std::endl;
+
+    struct tt
+    {
+        int               Test_id;
+        int               d;
+        std::vector<int>  arr;
+        int               exp_output;
+    }tmp;
+
+    std::vector<std::pair<FunctionPtr,std::string>> FunctionVariant;
+    FunctionVariant.push_back(std::make_pair(&beautifulTriplets__OTH_1,"__OTH_1"));
+    FunctionVariant.push_back(std::make_pair(&beautifulTriplets__PBA_1,"__PBA_1"));
+    FunctionVariant.push_back(std::make_pair(&beautifulTriplets__GPT_1,"__GPT_1"));
+    FunctionVariant.push_back(std::make_pair(&beautifulTriplets__GPT_2,"__GPT_2"));
+
+    std::vector<tt> TestTab;
+    //======================================//
+    // TEST 0 From HackerRank page          //
+    //======================================//
+    tmp.Test_id               =  0;
+    tmp.d                     =  3;
+    tmp.arr.insert(tmp.arr.end(), { 7, 7, 10, 13 });
+    tmp.exp_output            =  2;
+    TestTab.push_back(tmp);
+
+    // space for reading test from files
+
+
+
+
+    for(int i=0; i<TestTab.size(); i++){
+        for(int j=0; j<FunctionVariant.size(); j++){
+
+            std::string testedVersionText = FunctionVariant[i].second;
+            TRes TestResult = TRes::unknown;
+            int out = FunctionVariant[j].first(TestTab[i].d, TestTab[i].arr);
+            int exp = TestTab[i].exp_output;
+            TestResult = assertTrue(out,exp);
+
+            PRTRE_beautifulTriplets 
+                (   
+                TestResult,
+                TestTab[i].Test_id,
+                TestTab[i].d,
+                TestTab[i].arr.size(),
+                FunctionVariant[j].second,
+                out, 
+                exp,
+                TestTab[i].arr
+                );
+        }
+    }     
+}
+
 
 
 void TEST__circularArrayRotation(void)
@@ -597,6 +667,38 @@ void TEST__decode_cipherBacon(void)
 
 
 
+void PRTRE_beautifulTriplets 
+(   
+    TRes                TestResult,
+    int                 Test_id,
+    int                 d,
+    int                 arrSize,
+    std::string         testedVersionText,
+    int                 out, 
+    int                 exp,
+    std::vector<int>    arr
+)
+{
+    std::cout << "Test_id: " << Test_id << " ";
+    switch(TestResult)
+    {
+        case TRes::pass:    TEST_PASS break;
+        case TRes::fail:    TEST_FAIL break;
+        default:            TEST_UNKN break;
+    }
+    std::cout << " Ver: " << testedVersionText << std::endl;
+
+    if(debFlag)
+    {
+    std::cout << "d   :";                   std::cout << d    << " "; std::cout << std::endl;
+    std::cout << "arr :"; for(int el : arr) std::cout << el   << " "; std::cout << std::endl;
+    std::cout << "out :";                   std::cout << out  << " "; std::cout << std::endl;
+    std::cout << "exp :";                   std::cout << exp  << " "; std::cout << std::endl;
+    }
+}
+
+
+
 void PRTRE_circularArrayRotation 
 (   
     TRes             TestResult,
@@ -624,9 +726,6 @@ void PRTRE_circularArrayRotation
     std::cout << "out    :"; for(int el : out    ) std::cout << el   << " "; std::cout << std::endl;
     std::cout << "exp    :"; for(int el : exp    ) std::cout << el   << " "; std::cout << std::endl;
     }
-
-
-
 }
 
 
