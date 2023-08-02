@@ -37,6 +37,8 @@ template <typename T>
 TRes assertTrue(const T& actual, const T& expected);
 int checkDebFlag(int, char* []);
 
+void TEST__bigNumStringSort(void);
+void PRTRE_bigNumStringSort(TRes, int, std::vector<std::string>, std::vector<std::string>, std::vector<std::string>);
 void TEST__makeaDifrence(void);
 void PRTRE_beautifulTriplets (TRes, int, std::string, std::string, int, int );
 void TEST__beautifulTriplets(void);

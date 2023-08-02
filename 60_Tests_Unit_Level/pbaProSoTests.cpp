@@ -50,7 +50,55 @@ int checkDebFlag(int argc, char* argv[])
     debFlag=0;return 0;
 }
 
-// https://www.hackerrank.com/challenges/making-anagrams/problem?isFullScreen=true
+
+void TEST__bigNumStringSort(void)
+{
+    std::cout << "---------------------------------" << std::endl;
+    std::cout << "TEST: bigNumStringSort           " << std::endl;
+    std::cout << "---------------------------------" << std::endl;
+
+    struct tt
+    {
+        int                       Test_id;
+        std::vector<std::string>  unsorted;
+        std::vector<std::string>  obs_out;
+        std::vector<std::string>  exp_out; 
+    }tmp;
+
+    std::vector<tt> TestTab;
+    //======================================//
+    // TEST own                             //
+    //======================================//
+    tmp.Test_id  =  0;
+    tmp.unsorted =  {"1","11","111","2","22","222"};
+    tmp.exp_out  =  {"1","2","11","22","111","222"};
+    TestTab.push_back(tmp);
+    //======================================//
+    // TEST own                             //
+    //======================================//
+    tmp.Test_id  =  0;
+    tmp.unsorted =  {"1","1542659854848579132648577741","11","111","2","22","222"};
+    tmp.exp_out  =  {"1","2","11","22","111","222","1542659854848579132648577741"};
+    TestTab.push_back(tmp);
+
+    for(int i=0; i<(int)TestTab.size(); i++){
+       
+        TRes TestResult = TRes::unknown;
+        TestTab[i].obs_out = bigNumStringSort(TestTab[i].unsorted);
+        TestResult = assertTrue(TestTab[i].obs_out,TestTab[i].exp_out);
+
+        PRTRE_bigNumStringSort 
+        (   
+            TestResult,
+            TestTab[i].Test_id,
+            TestTab[i].unsorted,
+            TestTab[i].obs_out,
+            TestTab[i].exp_out 
+        );
+    }     
+}
+
+
 void TEST__makeaDifrence(void)
 {
     std::cout << "---------------------------------" << std::endl;
@@ -100,7 +148,7 @@ void TEST__makeaDifrence(void)
             TestTab[i].exp_out 
         );
     }     
-};
+}
 
 void TEST__beautifulTriplets(void)
 {
@@ -760,6 +808,33 @@ void TEST__decode_cipherBacon(void)
                 out, 
                 exp
             );
+    }    
+}
+
+
+
+void PRTRE_bigNumStringSort 
+(   
+    TRes                     TestResult,
+    int                      Test_id,
+    std::vector<std::string> unsorted,
+    std::vector<std::string> obs_out,
+    std::vector<std::string> exp_out 
+)
+{
+    std::cout << "Test_id: " << Test_id << " ";
+    switch(TestResult)
+    {
+        case TRes::pass:    TEST_PASS break;
+        case TRes::fail:    TEST_FAIL break;
+        default:            TEST_UNKN break;
+    }   std::cout << std::endl;
+
+    if(debFlag)
+    {
+    std::cout << "unsorted :"; std::cout<<std::endl; for(auto el : unsorted) std::cout<<el<<std::endl;
+    std::cout << "obs :";      std::cout<<std::endl; for(auto el : obs_out ) std::cout<<el<<std::endl;
+    std::cout << "exp :";      std::cout<<std::endl; for(auto el : exp_out ) std::cout<<el<<std::endl;
     }    
 }
 

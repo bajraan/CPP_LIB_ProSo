@@ -22,5 +22,6 @@ int main(int argc, char* argv[]) {
     TEST__circularArrayRotation();
     TEST__beautifulTriplets();
     TEST__makeaDifrence();
+    TEST__bigNumStringSort();
     return 0;
 }
