@@ -358,7 +358,7 @@ std::vector<int> circularArrayRotation(std::vector<int> a, int k, std::vector<in
 
 /**
  * 
- * Solution for mentioned problem.
+ * Solution for Save The Prinsoner mentioned problem.
  *
  * 1 Use: (Source)
  * https://www.hackerrank.com/challenges/save-the-prisoner/problem?isFullScreen=true
@@ -375,8 +375,6 @@ std::vector<int> circularArrayRotation(std::vector<int> a, int k, std::vector<in
  * @example	 5  2  2  ->   3
  * @example	 3  7  3  ->   3
  * @example	 7  19 2  ->   6
- *			------------------
- *			------------------
  *			------------------
  * 
  */
