@@ -109,7 +109,7 @@ int beautifulTriplets__PBA_1(int d, std::vector<int> arr) {
 
     int ret = 0;
 
-    for(int i=1; i<arr.size()-1; i++){
+    for(int i=1; i<(int)arr.size()-1; i++){
         int Left     = arr[i]-d;
         int LeftCnt  = 0;
         int Right    = arr[i]+d;
@@ -130,7 +130,7 @@ int beautifulTriplets__PBA_1(int d, std::vector<int> arr) {
         }
         
         //Check if Right Exists and how many
-        for(int j=i; j<arr.size(); j++){
+        for(int j=i; j<(int)arr.size(); j++){
             if(arr[j] == Right ){
                 Rexists = true;
                 while(arr[j] == Right ){

@@ -78,13 +78,13 @@ void TEST__makeaDifrence(void)
     //======================================//
     // TEST 15 From HackerRank page          //
     //======================================//
-    tmp.Test_id     =  0;
+    tmp.Test_id     =  1;
     tmp.s1          =  "absdjkvuahdakejfnfauhdsaavasdlkj";
     tmp.s2          =  "djfladfhiawasdkjvalskufhafablsdkashlahdfa";
     tmp.exp_out  =  19;
     TestTab.push_back(tmp);
 
-    for(int i=0; i<TestTab.size(); i++){
+    for(int i=0; i<(int)TestTab.size(); i++){
        
         TRes TestResult = TRes::unknown;
         TestTab[i].obs_out = makeaDifrence(TestTab[i].s1,TestTab[i].s2) ;
@@ -148,8 +148,8 @@ void TEST__beautifulTriplets(void)
 
 
 
-    for(int i=0; i<TestTab.size(); i++){
-        for(int j=0; j<FunctionVariant.size(); j++){
+    for(int i=0; i<(int)TestTab.size(); i++){
+        for(int j=0; j<(int)FunctionVariant.size(); j++){
 
             std::string testedVersionText = FunctionVariant[i].second;
             TRes TestResult = TRes::unknown;
