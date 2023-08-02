@@ -20,6 +20,22 @@ TRes assertTrue(const T& actual, const T& expected) {
     }
 }
 
+float Glob_testTimeResult_ms;
+Timer::Timer()
+{
+    m_StartTimePoint = std::chrono::high_resolution_clock::now();
+}
+Timer::~Timer()
+{
+    stop();
+}
+void Timer::stop()
+{
+    m_EndTimePoint = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(m_EndTimePoint - m_StartTimePoint).count();
+    Glob_testTimeResult_ms = duration;
+}
+
 
 
 int checkDebFlag(int argc, char* argv[])
@@ -34,7 +50,57 @@ int checkDebFlag(int argc, char* argv[])
     debFlag=0;return 0;
 }
 
+// https://www.hackerrank.com/challenges/making-anagrams/problem?isFullScreen=true
+void TEST__makeaDifrence(void)
+{
+    std::cout << "---------------------------------" << std::endl;
+    std::cout << "TEST: makeaDifrence              " << std::endl;
+    std::cout << "---------------------------------" << std::endl;
 
+    struct tt
+    {
+        int          Test_id;
+        std::string  s1;
+        std::string  s2;
+        int          exp_out; //expected
+        int          obs_out; //observed
+    }tmp;
+
+    std::vector<tt> TestTab;
+    //======================================//
+    // TEST own                             //
+    //======================================//
+    tmp.Test_id     =  0;
+    tmp.s1          =  "abba";
+    tmp.s2          =  "abba";
+    tmp.exp_out  =  0;
+    TestTab.push_back(tmp);
+    //======================================//
+    // TEST 15 From HackerRank page          //
+    //======================================//
+    tmp.Test_id     =  0;
+    tmp.s1          =  "absdjkvuahdakejfnfauhdsaavasdlkj";
+    tmp.s2          =  "djfladfhiawasdkjvalskufhafablsdkashlahdfa";
+    tmp.exp_out  =  19;
+    TestTab.push_back(tmp);
+
+    for(int i=0; i<TestTab.size(); i++){
+       
+        TRes TestResult = TRes::unknown;
+        TestTab[i].obs_out = makeaDifrence(TestTab[i].s1,TestTab[i].s2) ;
+        TestResult = assertTrue(TestTab[i].obs_out,TestTab[i].exp_out);
+
+        PRTRE_beautifulTriplets 
+        (   
+            TestResult,
+            TestTab[i].Test_id,
+            TestTab[i].s1,
+            TestTab[i].s2,
+            TestTab[i].obs_out,
+            TestTab[i].exp_out 
+        );
+    }     
+};
 
 void TEST__beautifulTriplets(void)
 {
@@ -695,6 +761,35 @@ void TEST__decode_cipherBacon(void)
                 exp
             );
     }    
+}
+
+
+
+void PRTRE_beautifulTriplets 
+(   
+    TRes        TestResult,
+    int         Test_id,
+    std::string s1,
+    std::string s2,
+    int         obs,
+    int         exp 
+)
+{
+    std::cout << "Test_id: " << Test_id << " ";
+    switch(TestResult)
+    {
+        case TRes::pass:    TEST_PASS break;
+        case TRes::fail:    TEST_FAIL break;
+        default:            TEST_UNKN break;
+    }   std::cout << std::endl;
+
+    if(debFlag)
+    {
+        std::cout << "s1  :"; std::cout << s1  << " "  ; std::cout << std::endl;
+        std::cout << "s2  :"; std::cout << s2  << " "  ; std::cout << std::endl;
+        std::cout << "out :"; std::cout << obs << " "  ; std::cout << std::endl;
+        std::cout << "exp :"; std::cout << exp << " "  ; std::cout << std::endl;
+    }   
 }
 
 

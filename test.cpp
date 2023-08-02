@@ -21,5 +21,6 @@ int main(int argc, char* argv[]) {
     TEST__saveThePrisoner();
     TEST__circularArrayRotation();
     TEST__beautifulTriplets();
+    TEST__makeaDifrence();
     return 0;
 }

@@ -8,10 +8,12 @@
 #include <cmath>
 #include <vector>
 #include <algorithm>
+#include <map>
 #include <unordered_map>
 
 void test(void);
 
+int              makeaDifrence              (std::string, std::string);
 std::vector<int> circularArrayRotation      (std::vector<int>, int, std::vector<int>);
 int              saveThePrisoner            (int, int, int);
 std::vector<int> intigerToDigitsVector      (int);

@@ -7,6 +7,18 @@ void test(void)
 
 
 
+int makeaDifrence(std::string s1, std::string s2) {
+    int ret = 0;
+    std::map<char, int> base;
+    for(char zn = 'a'; zn<='z'; zn++) base.insert(std::make_pair(zn, 0));
+    for(char zn : s1) base[zn]++;
+    for(char zn : s2) base[zn]--;
+    for(auto pos : base) ret += abs(pos.second) ;    
+    return ret;
+}
+
+
+
 /**
  * 
  * Solution for Beautiful Triplets problem.
