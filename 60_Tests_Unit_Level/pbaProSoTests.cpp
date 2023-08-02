@@ -64,12 +64,19 @@ void TEST__beautifulTriplets(void)
     //======================================//
     // TEST 0 From HackerRank page          //
     //======================================//
-    tmp.Test_id               =  0;
-    tmp.d                     =  3;
-    tmp.arr.insert(tmp.arr.end(), { 7, 7, 10, 13 });
-    tmp.exp_output            =  2;
+    tmp.Test_id     =  0;
+    tmp.d           =  3;
+    tmp.arr         = { 7, 7, 10, 13 };
+    tmp.exp_output  =  2;
     TestTab.push_back(tmp);
-
+    //======================================//
+    // TEST 0 From HackerRank page          //
+    //======================================//
+    tmp.Test_id    =  1;
+    tmp.d          =  1;
+    tmp.arr        = { 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100 };
+    tmp.exp_output =  98;
+    TestTab.push_back(tmp);
     // space for reading test from files
 
 
@@ -80,8 +87,32 @@ void TEST__beautifulTriplets(void)
 
             std::string testedVersionText = FunctionVariant[i].second;
             TRes TestResult = TRes::unknown;
-            int out = FunctionVariant[j].first(TestTab[i].d, TestTab[i].arr);
-            int exp = TestTab[i].exp_output;
+            std::string jacek;
+            int out, exp;
+            
+            std::chrono::time_point<std::chrono::high_resolution_clock> start;
+            std::chrono::time_point<std::chrono::high_resolution_clock> end;
+            {
+                Timer Time;
+            
+            start = std::chrono::high_resolution_clock::now();
+            out = FunctionVariant[j].first(TestTab[i].d, TestTab[i].arr);
+            end = std::chrono::high_resolution_clock::now();
+            
+            }
+
+                std::time_t start_time = std::chrono::system_clock::to_time_t(start);
+                std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+                std::cout << std::endl;
+                std::cout << "Start time: " << std::ctime(&start_time);
+                std::cout << "End time: " << std::ctime(&end_time);
+                std::cout << std::endl;
+            auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+            std::cout << std::endl;
+            std::cout << "classtimer:" << Glob_testTimeResult_ms << std::endl;
+            std::cout << "Czas trwania: " << duration << " mikrosekund." << std::endl;
+
+            exp = TestTab[i].exp_output;
             TestResult = assertTrue(out,exp);
 
             PRTRE_beautifulTriplets 
@@ -93,7 +124,8 @@ void TEST__beautifulTriplets(void)
                 FunctionVariant[j].second,
                 out, 
                 exp,
-                TestTab[i].arr
+                TestTab[i].arr,
+                Glob_testTimeResult_ms
                 );
         }
     }     
@@ -676,7 +708,8 @@ void PRTRE_beautifulTriplets
     std::string         testedVersionText,
     int                 out, 
     int                 exp,
-    std::vector<int>    arr
+    std::vector<int>    arr,
+    float               timeRes_ms
 )
 {
     std::cout << "Test_id: " << Test_id << " ";
@@ -690,10 +723,11 @@ void PRTRE_beautifulTriplets
 
     if(debFlag)
     {
-    std::cout << "d   :";                   std::cout << d    << " "; std::cout << std::endl;
-    std::cout << "arr :"; for(int el : arr) std::cout << el   << " "; std::cout << std::endl;
-    std::cout << "out :";                   std::cout << out  << " "; std::cout << std::endl;
-    std::cout << "exp :";                   std::cout << exp  << " "; std::cout << std::endl;
+    std::cout << "d    :";                   std::cout << d          << " "  ; std::cout << std::endl;
+    std::cout << "arr  :"; for(int el : arr) std::cout << el         << " "  ; std::cout << std::endl;
+    std::cout << "out  :";                   std::cout << out        << " "  ; std::cout << std::endl;
+    std::cout << "exp  :";                   std::cout << exp        << " "  ; std::cout << std::endl;
+    std::cout << "time :";                   std::cout << std::fixed << std::setprecision(6) << timeRes_ms << " ms"; std::cout << std::endl;
     }
 }
 
