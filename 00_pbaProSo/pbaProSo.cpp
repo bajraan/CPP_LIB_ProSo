@@ -7,15 +7,6 @@ void test(void)
 
 
 
-int makeaDifrence(std::string s1, std::string s2) {
-    int ret = 0;
-    std::map<char, int> base;
-    for(char zn = 'a'; zn<='z'; zn++) base.insert(std::make_pair(zn, 0));
-    for(char zn : s1) base[zn]++;
-    for(char zn : s2) base[zn]--;
-    for(auto pos : base) ret += abs(pos.second) ;    
-    return ret;
-}
 
 /**
  * 
@@ -51,6 +42,40 @@ std::vector<std::string> bigNumStringSort(std::vector<std::string> unsorted) {
     for(auto el : mySet) ret.push_back(el);
     return ret;
 }
+
+/**
+ * 
+ * Solution for Making Anagrams problem.
+ *
+ *  -> How many letters do you need to remove for both strings to become identical? 
+ * 
+ * 1 Use: (Source)
+ * https://www.hackerrank.com/challenges/making-anagrams/problem
+ * 
+ * @param  string s1	first string
+ * @param  string s2    second string
+ * @return int 			return the numeric value of differences between two strings
+ * 
+ * @example s1: "abba" 
+ * 			s2: "abba"
+ * 		ret ->: 0
+ * 
+ * @example s1: "abbaqwe" 
+ * 			s2: "abbaplm"
+ * 		ret ->: 6
+ * 
+ */
+int makeaDifrence(std::string s1, std::string s2) {
+    int ret = 0;
+    std::map<char, int> base;
+    for(char zn = 'a'; zn<='z'; zn++) base.insert(std::make_pair(zn, 0));
+    for(char zn : s1) base[zn]++;
+    for(char zn : s2) base[zn]--;
+    for(auto pos : base) ret += abs(pos.second) ;    
+    return ret;
+}
+
+
 
 /**
  * 
