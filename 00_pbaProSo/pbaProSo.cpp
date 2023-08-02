@@ -17,7 +17,40 @@ int makeaDifrence(std::string s1, std::string s2) {
     return ret;
 }
 
+/**
+ * 
+ * Solution for Big Sorting problem.
+ *
+ * 1 Use: (Source)
+ * https://www.hackerrank.com/challenges/big-sorting/problem?isFullScreen=true
+ * 
+ * @param  vector<string> unsorted 	array of unsorted string
+ * @return vector<string> 			array of sorted string
+ * 
+ * @example unsorted: "3" "45" "123" "1" "11" "111"
+ * 			ret	   -> "1" "3" "11" "45" "111" "123"
+ * 
+ * @example unsorted: "1" "11" "111" "2" "22" "222"
+ * 			ret	   -> "1" "2" "11" "22" "111" "222"
+ * 
+ */
+std::vector<std::string> bigNumStringSort(std::vector<std::string> unsorted) {
 
+	struct strAlphaNumaComparator 
+	{
+    	bool operator()(const std::string& str1, const std::string& str2) const {
+        if (str1.length() != str2.length())
+            	return str1.length() < str2.length();
+        return str1 < str2;
+    	}
+	};
+
+    std::multiset<std::string,strAlphaNumaComparator> mySet;
+    std::vector<std::string> ret;
+    for(auto el : unsorted) mySet.insert(el);
+    for(auto el : mySet) ret.push_back(el);
+    return ret;
+}
 
 /**
  * 
