@@ -1,5 +1,7 @@
 #include "60_Tests_Unit_Level/pbaProSoTests.hpp"
 
+void TEST_ALL(void);
+
 int main(int argc, char* argv[]) {
 
     std::cout << std::endl << std::endl;
@@ -12,6 +14,19 @@ int main(int argc, char* argv[]) {
     std::cout << "============================"<< std::endl;
 
     checkDebFlag(argc,argv);
+
+
+    //TEST__ALL();
+    TEST__simpleEratostenesSieve();
+    TEST__acceleratedEratostenesSieve();
+
+
+
+    return 0;
+}
+
+void TEST__ALL()
+{
     TEST__decode_cipherVigenere();
     TEST__decode_cipherBacon();
     TEST__missingNumbers();
@@ -23,5 +38,4 @@ int main(int argc, char* argv[]) {
     TEST__beautifulTriplets();
     TEST__makeaDifrence();
     TEST__bigNumStringSort();
-    return 0;
 }

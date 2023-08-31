@@ -13,8 +13,9 @@
 #include <unordered_map>
 
 void test(void);
-
-
+ 
+void             acceleratedEratostenesSieve(std::vector<long long>& isprime, std::vector<long long>& prime, std::vector<long long>& SPF);
+void             simpleEratostenesSieve     (std::vector<bool>& sieve);
 int              makeaDifrence              (std::string, std::string);
 int              saveThePrisoner            (int, int, int);
 std::vector<int> circularArrayRotation      (std::vector<int>, int, std::vector<int>);

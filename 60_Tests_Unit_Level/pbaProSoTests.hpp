@@ -37,6 +37,10 @@ template <typename T>
 TRes assertTrue(const T& actual, const T& expected);
 int checkDebFlag(int, char* []);
 
+void TEST__acceleratedEratostenesSieve(void);
+void PRTRE_acceleratedEratostenesSieve(int, int, std::chrono::duration<double>);
+void TEST__simpleEratostenesSieve(void);
+void PRTRE_simpleEratostenesSieve(int, int, std::chrono::duration<double>);
 void TEST__bigNumStringSort(void);
 void PRTRE_bigNumStringSort(TRes, int, std::vector<std::string>, std::vector<std::string>, std::vector<std::string>);
 void TEST__makeaDifrence(void);

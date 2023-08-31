@@ -51,6 +51,117 @@ int checkDebFlag(int argc, char* argv[])
 }
 
 
+
+void TEST__acceleratedEratostenesSieve (void)
+{
+    std::cout << "-----------------------------------" << std::endl;
+    std::cout << "TEST: acceleratedEratostenesSieve  " << std::endl;
+    std::cout << "-----------------------------------" << std::endl;
+
+    struct tt
+    {
+        int     Test_id;
+        int     sieveSize;
+
+    }tmp;
+
+    std::vector<tt> TestTab;
+    //======================================//
+    // TEST own                             //
+    //======================================//
+    tmp.Test_id  =  0;
+    tmp.sieveSize = 98765432;
+    TestTab.push_back(tmp);
+    //======================================//
+    // TEST own                             //
+    //======================================//
+    // tmp.Test_id  =  1;
+    // tmp.sieveSize = 100000000;
+    // TestTab.push_back(tmp);
+
+
+    for(int i=0; i<(int)TestTab.size(); i++){
+       
+        long long MAX_SIZE = TestTab[i].sieveSize;
+
+        std::vector<long long>isprime(MAX_SIZE , true);
+        std::vector<long long>prime;
+        std::vector<long long>SPF(MAX_SIZE);
+
+        auto start = std::chrono::high_resolution_clock::now();
+
+        acceleratedEratostenesSieve
+        (
+            isprime,
+            prime,
+            SPF
+        );
+
+        auto end = std::chrono::high_resolution_clock::now(); // Zapisz czas zakoäczenia
+        std::chrono::duration<double> duration = end - start; // Oblicz czas trwania w sekundach
+
+        PRTRE_acceleratedEratostenesSieve
+        (   
+            TestTab[i].Test_id,
+            TestTab[i].sieveSize,
+            duration
+        );
+    }     
+}
+
+
+
+void TEST__simpleEratostenesSieve (void)
+{
+    std::cout << "---------------------------------" << std::endl;
+    std::cout << "TEST: simpleEratostenesSieve     " << std::endl;
+    std::cout << "---------------------------------" << std::endl;
+
+    struct tt
+    {
+        int     Test_id;
+        int     sieveSize;
+
+    }tmp;
+
+    std::vector<tt> TestTab;
+    //======================================//
+    // TEST own                             //
+    //======================================//
+    tmp.Test_id  =  0;
+    tmp.sieveSize = 98765432;
+    TestTab.push_back(tmp);
+    //======================================//
+    // TEST own                             //
+    //======================================//
+    // tmp.Test_id  =  1;
+    // tmp.sieveSize = 100000000;
+    // TestTab.push_back(tmp);
+
+
+    for(int i=0; i<(int)TestTab.size(); i++){
+       
+        std::vector<bool> sieve(TestTab[i].sieveSize,true);
+
+        auto start = std::chrono::high_resolution_clock::now(); // Zapisz czas rozpocz©cia
+
+        simpleEratostenesSieve(sieve);
+
+        auto end = std::chrono::high_resolution_clock::now(); // Zapisz czas zakoäczenia
+        std::chrono::duration<double> duration = end - start; // Oblicz czas trwania w sekundach
+
+
+        PRTRE_simpleEratostenesSieve
+        (   
+            TestTab[i].Test_id,
+            TestTab[i].sieveSize,
+            duration
+        );
+    }     
+}
+
+
+
 void TEST__bigNumStringSort(void)
 {
     std::cout << "---------------------------------" << std::endl;
@@ -810,6 +921,40 @@ void TEST__decode_cipherBacon(void)
             );
     }    
 }
+
+
+void PRTRE_simpleEratostenesSieve
+(
+    int                           Test_id,
+    int                           size, 
+    std::chrono::duration<double> duration
+)
+{
+    if(debFlag)
+    {
+        std::cout << "T_id :"; std::cout << Test_id          << " "  ; std::cout << std::endl;
+        std::cout << "size :"; std::cout << size             << " "  ; std::cout << std::endl;
+        std::cout << "time :"; std::cout << duration.count() << " "  ; std::cout << std::endl;
+    }   
+}
+
+
+
+void PRTRE_acceleratedEratostenesSieve
+(
+    int                           Test_id,
+    int                           size, 
+    std::chrono::duration<double> duration
+)
+{
+    if(debFlag)
+    {
+        std::cout << "T_id :"; std::cout << Test_id          << " "  ; std::cout << std::endl;
+        std::cout << "size :"; std::cout << size             << " "  ; std::cout << std::endl;
+        std::cout << "time :"; std::cout << duration.count() << " "  ; std::cout << std::endl;
+    }   
+}
+
 
 
 

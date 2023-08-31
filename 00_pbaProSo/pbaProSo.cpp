@@ -7,6 +7,51 @@ void test(void)
 
 
 
+void simpleEratostenesSieve   (std::vector<bool>& sieve)
+{
+	long long size = sieve.size();
+	sieve[0] = false;
+	sieve[1] = false;
+		
+	for(long long i=2; i<size; i++){
+		if(sieve[i] != false ){
+			for(long long j=2*i; j<size; j+=i){
+					sieve[j] = false;
+			}
+		}
+	}
+}
+
+void acceleratedEratostenesSieve
+(
+	std::vector<long long>& isprime,
+	std::vector<long long>& prime,
+	std::vector<long long>& SPF
+)
+{
+	int N = isprime.size();
+
+    isprime[0] = isprime[1] = false ;
+    for (long long int i=2; i<N ; i++)
+    {
+        if (isprime[i])
+        {
+            prime.push_back(i);
+            SPF[i] = i;
+        }
+ 
+        for 
+        (	
+        	long long int j=0;
+            j < (int)prime.size() && i*prime[j] < N && prime[j] <= SPF[i];
+            j++
+        )
+        {
+            isprime[i*prime[j]]=false;
+            SPF[i*prime[j]] = prime[j];
+        }
+    }
+}
 
 /**
  * 
