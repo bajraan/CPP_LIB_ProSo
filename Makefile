@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -std=c++11 -Wall
+CFLAGS = -std=c++2a -Wall
 TARGET = out
 TEST_TARGET = test_runner
 

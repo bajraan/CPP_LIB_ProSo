@@ -9,8 +9,6 @@ HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
 bool debFlag;
 
-typedef int(*FunctionPtr)(int, std::vector<int>);
-
 template <typename T>
 TRes assertTrue(const T& actual, const T& expected) {
     if (actual == expected) {
@@ -38,46 +36,50 @@ void Timer::stop()
 
 
 
+
 int checkDebFlag(int argc, char* argv[])
 {
     char* tmp = argv[1];
-    for (int i = 1; i < argc; i++) 
-    {
+    for (int i = 1; i < argc; i++) {
         if (strcmp(tmp , "-deb") == 0) {
             debFlag = 1;return 1;
         }
     }
-    debFlag=0;return 0;
+    debFlag=0;
+    return 0;
 }
 
 
 
-void TEST__acceleratedEratostenesSieve (void)
+void TEST__primes_EratostenesSieve (void)
 {
-    std::cout << "-----------------------------------" << std::endl;
-    std::cout << "TEST: acceleratedEratostenesSieve  " << std::endl;
-    std::cout << "-----------------------------------" << std::endl;
+    std::cout << "--------------------------------------" << std::endl;
+    std::cout << "TEST: primes_EratostenesSieve         " << std::endl;
+    std::cout << "                             __SIMPLE " << std::endl;
+    std::cout << "                             __ACC    " << std::endl;
+    std::cout << "                             __NAIVE  " << std::endl;
+    std::cout << "--------------------------------------" << std::endl;
 
     struct tt
     {
-        int     Test_id;
-        int     sieveSize;
-
+        int       Test_id;
+        int       sieveSize;
     }tmp;
+
 
     std::vector<tt> TestTab;
     //======================================//
-    // TEST own                             //
+    // TEST OWN                             //
     //======================================//
-    tmp.Test_id  =  0;
-    tmp.sieveSize = 98765432;
+    tmp.Test_id   =  0;
+    tmp.sieveSize =  1000000;
     TestTab.push_back(tmp);
     //======================================//
-    // TEST own                             //
+    // TEST OWN                             //
     //======================================//
-    // tmp.Test_id  =  1;
-    // tmp.sieveSize = 100000000;
-    // TestTab.push_back(tmp);
+    tmp.Test_id    =  1;
+    tmp.sieveSize  =  98765432;
+    TestTab.push_back(tmp);
 
 
     for(int i=0; i<(int)TestTab.size(); i++){
@@ -90,75 +92,59 @@ void TEST__acceleratedEratostenesSieve (void)
 
         auto start = std::chrono::high_resolution_clock::now();
 
-        acceleratedEratostenesSieve
+        primes_EratostenesSieve__ACC
         (
             isprime,
             prime,
             SPF
         );
 
-        auto end = std::chrono::high_resolution_clock::now(); // Zapisz czas zakoäczenia
-        std::chrono::duration<double> duration = end - start; // Oblicz czas trwania w sekundach
+        auto end = std::chrono::high_resolution_clock::now(); 
+        std::chrono::duration<double> duration = end - start; 
 
-        PRTRE_acceleratedEratostenesSieve
+        std::string funcVariant = "__ACC";
+        PRTRE_primes_EratostenesSieve
         (   
+            funcVariant,
+            TestTab[i].Test_id,
+            TestTab[i].sieveSize,
+            duration
+        );
+
+
+        std::vector<bool>sieve(MAX_SIZE, true);
+
+        start = std::chrono::high_resolution_clock::now();
+        primes_EratostenesSieve__SIMPLE(sieve);
+        end = std::chrono::high_resolution_clock::now(); 
+        duration = end - start; 
+
+        funcVariant = "__SIMPLE";
+        PRTRE_primes_EratostenesSieve
+        (   
+            funcVariant,
+            TestTab[i].Test_id,
+            TestTab[i].sieveSize,
+            duration
+        );
+
+        int n = MAX_SIZE;
+
+        start = std::chrono::high_resolution_clock::now();
+        primes_EratostenesSieve__NAIVE  (n);
+        end = std::chrono::high_resolution_clock::now(); 
+        duration = end - start; 
+
+        funcVariant = "__NAIVE";
+        PRTRE_primes_EratostenesSieve
+        (   
+            funcVariant,
             TestTab[i].Test_id,
             TestTab[i].sieveSize,
             duration
         );
     }     
-}
-
-
-
-void TEST__simpleEratostenesSieve (void)
-{
-    std::cout << "---------------------------------" << std::endl;
-    std::cout << "TEST: simpleEratostenesSieve     " << std::endl;
-    std::cout << "---------------------------------" << std::endl;
-
-    struct tt
-    {
-        int     Test_id;
-        int     sieveSize;
-
-    }tmp;
-
-    std::vector<tt> TestTab;
-    //======================================//
-    // TEST own                             //
-    //======================================//
-    tmp.Test_id  =  0;
-    tmp.sieveSize = 98765432;
-    TestTab.push_back(tmp);
-    //======================================//
-    // TEST own                             //
-    //======================================//
-    // tmp.Test_id  =  1;
-    // tmp.sieveSize = 100000000;
-    // TestTab.push_back(tmp);
-
-
-    for(int i=0; i<(int)TestTab.size(); i++){
-       
-        std::vector<bool> sieve(TestTab[i].sieveSize,true);
-
-        auto start = std::chrono::high_resolution_clock::now(); // Zapisz czas rozpocz©cia
-
-        simpleEratostenesSieve(sieve);
-
-        auto end = std::chrono::high_resolution_clock::now(); // Zapisz czas zakoäczenia
-        std::chrono::duration<double> duration = end - start; // Oblicz czas trwania w sekundach
-
-
-        PRTRE_simpleEratostenesSieve
-        (   
-            TestTab[i].Test_id,
-            TestTab[i].sieveSize,
-            duration
-        );
-    }     
-}
+}     
 
 
 
@@ -208,6 +194,7 @@ void TEST__bigNumStringSort(void)
         );
     }     
 }
+
 
 
 void TEST__makeaDifrence(void)
@@ -270,6 +257,8 @@ void TEST__beautifulTriplets(void)
     std::cout << "                      __GPT_1    " << std::endl;
     std::cout << "                      __GPT_2    " << std::endl;
     std::cout << "---------------------------------" << std::endl;
+
+    typedef int(*FunctionPtr)(int, std::vector<int>);
 
     struct tt
     {
@@ -923,37 +912,25 @@ void TEST__decode_cipherBacon(void)
 }
 
 
-void PRTRE_simpleEratostenesSieve
+void PRTRE_primes_EratostenesSieve
 (
+    std::string                   functionVariant,
     int                           Test_id,
     int                           size, 
     std::chrono::duration<double> duration
 )
-{
+{   
     if(debFlag)
-    {
-        std::cout << "T_id :"; std::cout << Test_id          << " "  ; std::cout << std::endl;
-        std::cout << "size :"; std::cout << size             << " "  ; std::cout << std::endl;
-        std::cout << "time :"; std::cout << duration.count() << " "  ; std::cout << std::endl;
+    {   
+        std::cout << std::endl;
+        std::cout << std::endl;
+        std::cout << "F_var :" << functionVariant  << std::endl;
+        std::cout << "T_id  :" << Test_id          << std::endl;
+        std::cout << "size  :" << size             << std::endl;
+        std::cout << "time  :" << duration.count() << std::endl;
     }   
 }
 
-
-
-void PRTRE_acceleratedEratostenesSieve
-(
-    int                           Test_id,
-    int                           size, 
-    std::chrono::duration<double> duration
-)
-{
-    if(debFlag)
-    {
-        std::cout << "T_id :"; std::cout << Test_id          << " "  ; std::cout << std::endl;
-        std::cout << "size :"; std::cout << size             << " "  ; std::cout << std::endl;
-        std::cout << "time :"; std::cout << duration.count() << " "  ; std::cout << std::endl;
-    }   
-}
 
 
 

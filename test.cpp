@@ -17,13 +17,12 @@ int main(int argc, char* argv[]) {
 
 
     //TEST__ALL();
-    TEST__simpleEratostenesSieve();
-    TEST__acceleratedEratostenesSieve();
-
+    TEST__primes_EratostenesSieve();
 
 
     return 0;
 }
+
 
 void TEST__ALL()
 {

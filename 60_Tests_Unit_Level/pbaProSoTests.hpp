@@ -6,6 +6,9 @@
 #include <cstring>
 #include <vector>
 #include <chrono>
+#include <functional>
+#include <variant>
+#include <any>
 
 extern float Glob_testTimeResult_ms;
 
@@ -37,10 +40,8 @@ template <typename T>
 TRes assertTrue(const T& actual, const T& expected);
 int checkDebFlag(int, char* []);
 
-void TEST__acceleratedEratostenesSieve(void);
-void PRTRE_acceleratedEratostenesSieve(int, int, std::chrono::duration<double>);
-void TEST__simpleEratostenesSieve(void);
-void PRTRE_simpleEratostenesSieve(int, int, std::chrono::duration<double>);
+void TEST__primes_EratostenesSieve(void);
+void PRTRE_primes_EratostenesSieve(std::string, int, int, std::chrono::duration<double>);
 void TEST__bigNumStringSort(void);
 void PRTRE_bigNumStringSort(TRes, int, std::vector<std::string>, std::vector<std::string>, std::vector<std::string>);
 void TEST__makeaDifrence(void);

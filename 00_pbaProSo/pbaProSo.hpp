@@ -11,11 +11,16 @@
 #include <set>
 #include <map>
 #include <unordered_map>
+#include <cstring>
 
 void test(void);
- 
-void             acceleratedEratostenesSieve(std::vector<long long>& isprime, std::vector<long long>& prime, std::vector<long long>& SPF);
-void             simpleEratostenesSieve     (std::vector<bool>& sieve);
+
+int              tt(int,int); 
+void             primes_EratostenesSieve__ACC    (std::vector<long long>& isprime, std::vector<long long>& prime, std::vector<long long>& SPF);
+void             primes_EratostenesSieve__BASE   (std::vector<bool>& sieve);
+void             primes_EratostenesSieve__SIMPLE (std::vector<bool>& sieve);
+void             primes_EratostenesSieve__NAIVE  (int n);
+
 int              makeaDifrence              (std::string, std::string);
 int              saveThePrisoner            (int, int, int);
 std::vector<int> circularArrayRotation      (std::vector<int>, int, std::vector<int>);
