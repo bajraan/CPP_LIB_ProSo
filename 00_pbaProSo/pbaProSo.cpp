@@ -1,14 +1,46 @@
 #include "pbaProSo.hpp"
 
-void test(void)
+void    test(void)
 {
     std::cout << "Library compilation - PASS" << std::endl;
 }
 
+bool    isPrime
+(
+    const int n
+)
+{
+    if(n<2) return false;
 
-void             primes_EratostenesSieve__BASE   (std::vector<bool>& sieve);
+    if(n==2 || n==3) return true;
 
-void simpleSieve(int limit, std::vector<int> &prime)
+    if(n%2==0 || n%3==0) return false;
+    
+    for(int i =5; i*i < n; i+=6){
+        if(n%i==0 || n%(i+2)==0){
+            return false;
+        }
+    }
+    return true;
+}
+
+
+
+void    primes_EratostenesSieve__BASE
+(
+    std::vector<bool>& sieve
+)
+{
+
+}
+
+
+
+void    simpleSieve
+(
+    int              limit, 
+    std::vector<int> &prime
+)
 {
 	using namespace std;
     // Create a boolean array "mark[0..n-1]" and initialize
@@ -38,7 +70,7 @@ void simpleSieve(int limit, std::vector<int> &prime)
     }
 }
 
-void primes_EratostenesSieve__NAIVE  (int n)
+void    primes_EratostenesSieve__NAIVE(int n)
 {
 	using namespace std;
     // Compute all primes smaller than or equal
@@ -101,13 +133,27 @@ void primes_EratostenesSieve__NAIVE  (int n)
 }
 
 
+void primes_EratostenesSieve_SSIMPLE   (unsigned long long size )
+{
+	std::vector<bool>sieve(size, true);
+	sieve[0] = false;
+	sieve[1] = false;
+	for(unsigned long long i=2; i<size; i++){
+		if(sieve[i] != false ){
+			for(unsigned long long j=2*i; j<size; j+=i){
+					sieve[j] = false;
+			}
+		}
+	}
+}
+
 
 void primes_EratostenesSieve__SIMPLE   (std::vector<bool>& sieve)
 {
 	long long size = sieve.size();
 	sieve[0] = false;
 	sieve[1] = false;
-		
+	
 	for(long long i=2; i<size; i++){
 		if(sieve[i] != false ){
 			for(long long j=2*i; j<size; j+=i){

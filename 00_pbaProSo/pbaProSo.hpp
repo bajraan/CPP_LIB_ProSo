@@ -15,11 +15,13 @@
 
 void test(void);
 
-int              tt(int,int); 
-void             primes_EratostenesSieve__ACC    (std::vector<long long>& isprime, std::vector<long long>& prime, std::vector<long long>& SPF);
-void             primes_EratostenesSieve__BASE   (std::vector<bool>& sieve);
-void             primes_EratostenesSieve__SIMPLE (std::vector<bool>& sieve);
-void             primes_EratostenesSieve__NAIVE  (int n);
+int          tt(int,int);
+bool         isPrime                         (const int number);
+void         primes_EratostenesSieve__ACC    (std::vector<long long>& isprime, std::vector<long long>& prime, std::vector<long long>& SPF);
+void         primes_EratostenesSieve__BASE   (std::vector<bool>& sieve);
+void         primes_EratostenesSieve__SIMPLE (std::vector<bool>& sieve);
+void         primes_EratostenesSieve_SSIMPLE (unsigned long long);
+void         primes_EratostenesSieve__NAIVE  (int n);
 
 int              makeaDifrence              (std::string, std::string);
 int              saveThePrisoner            (int, int, int);
