@@ -12,6 +12,7 @@
 #include <map>
 #include <unordered_map>
 #include <cstring>
+#include <cstdint>
 
 void test(void);
 
