@@ -1,6 +1,6 @@
 #include "60_Tests_Unit_Level/pbaProSoTests.hpp"
 
-void TEST_ALL(void);
+void TEST__ALL(void);
 
 int main(int argc, char* argv[]) {
 
@@ -16,8 +16,8 @@ int main(int argc, char* argv[]) {
     checkDebFlag(argc,argv);
 
 
-    //TEST__ALL();
-    TEST__primes_EratostenesSieve();
+    TEST__ALL();
+    //TEST__primes_EratostenesSieve();
 
 
     return 0;
