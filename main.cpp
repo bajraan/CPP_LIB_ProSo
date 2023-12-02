@@ -10,8 +10,7 @@
 #include "00_pbaProSo/pbaProSo.hpp"
 
 int main() {
-    test(); // Wywoˆanie funkcji z biblioteki "pbaProSo"
-    //brute();
+    test();
     decode_cipherBacon("ABAAAABABAABBABBAABBAABAAAAAABAAAAAAAABAABBABABBAAAAABBABBABABBAABAABABABBAABBABBAABB",'A','B');
     return 0;
 }
